@@ -12,7 +12,6 @@ import {
   UserIcon,
 } from '@heroicons/react/24/outline';
 import { classNames } from '@/utils/conditionalClasses';
-import { useLocale } from 'next-intl';
 import { signOut } from 'next-auth/react';
 import { Link } from '@/navigation';
 import { Session } from 'next-auth';
@@ -23,9 +22,34 @@ type Props = {
 };
 
 export default function Example({ children, session }: Props) {
-  console.log('sessionInAdmin-->', session);
-  const locale = useLocale();
+  console.log('sessionInAdmin-->', session?.user.name);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  const [navigation, setNavigation] = useState(
+    session?.user.name === 'user'
+      ? [
+          {
+            name: 'Dashboard',
+            href: `/admin/dashboard`,
+            icon: HomeIcon,
+          },
+          { name: 'Coupons', href: `/admin/coupons`, icon: FolderIcon },
+        ]
+      : [
+          {
+            name: 'Dashboard',
+            href: `/admin/dashboard`,
+            icon: HomeIcon,
+          },
+          { name: 'Tables', href: `/admin/tables`, icon: UsersIcon },
+          { name: 'Coupons', href: `/admin/coupons`, icon: FolderIcon },
+          {
+            name: 'Reports',
+            href: `/admin/reports`,
+            icon: DocumentDuplicateIcon,
+          },
+        ]
+  );
 
   function onLogoutClick() {
     signOut();

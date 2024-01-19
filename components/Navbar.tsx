@@ -20,9 +20,7 @@ export default function Navbar({ session }: Props) {
   function onLogoutClick() {
     signOut();
   }
-  useEffect(() => {
-    console.log('navbar session-->', session);
-  }, [session]);
+  useEffect(() => {}, [session]);
 
   return (
     <Disclosure as="nav" className="bg-white">
