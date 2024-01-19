@@ -1,14 +1,17 @@
-import "../../../styles/globals.css";
+import '../../../styles/globals.css';
 
-import { VT323 } from "next/font/google";
-import { notFound } from "next/navigation";
-import { useLocale } from "next-intl";
+import { VT323 } from 'next/font/google';
+import { notFound } from 'next/navigation';
+import { useLocale } from 'next-intl';
+import AdminDashboardLayout from '@/components/adminDashboard/AdminDashboardLayout';
+import { getServerSession } from 'next-auth';
+import auth from '@/lib/auth';
 
-const vt323 = VT323({ weight: "400", subsets: ["latin"] });
+const vt323 = VT323({ weight: '400', subsets: ['latin'] });
 
-const locales = ["en", "de"];
+const locales = ['en', 'de'];
 
-export default function AdminLayout({
+export default async function AdminLayout({
   children,
   // params: locale,
   params,
@@ -20,11 +23,12 @@ export default function AdminLayout({
   // console.log(locale);
   if (params.locale !== locale) notFound();
 
+  const session = await getServerSession(auth);
+
   return (
     <html lang={locale} className={vt323.className}>
       <body>
-        <h2 className="text-xl text-center">Admin</h2>
-        {children}
+        <AdminDashboardLayout children={children} session={session} />
       </body>
     </html>
   );

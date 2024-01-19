@@ -24,7 +24,6 @@ export default async function RootLayout({
   if (params.locale !== locale) notFound();
 
   const session = await getServerSession(auth);
-  console.log('layout--Session', session);
 
   return (
     <html lang={locale} className={vt323.className}>

@@ -5,6 +5,7 @@ import { useLocale } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import React, { FormEvent, useState } from 'react';
 import CompanyImage from '../CompanyImage';
+import { Link } from '@/navigation';
 
 const LoginForm = () => {
   const locale = useLocale();
@@ -35,8 +36,13 @@ const LoginForm = () => {
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
         <CompanyImage classes={'mx-auto h-10 w-auto'} />
         <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-          Sign in to your account
+          Giriş yap
         </h2>
+        <div className="mt-2 flex justify-center">
+          <Link href={'/'} className="text-blue-500">
+            Anasayfaya Dön{' '}
+          </Link>
+        </div>
       </div>
 
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">

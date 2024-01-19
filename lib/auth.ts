@@ -15,7 +15,7 @@ const auth: AuthOptions = {
           credentials?.username === process.env.SITE_ADMIN &&
           credentials?.password === process.env.SITE_PASSWORD
         ) {
-          return { id: '1', name: 'admin' };
+          return { id: '1', name: 'admin', role: 'admin' };
         }
 
         return null;

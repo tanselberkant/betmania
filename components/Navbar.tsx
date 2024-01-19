@@ -48,9 +48,6 @@ export default function Navbar({ session }: Props) {
                 >
                   {locale === 'en' ? 'Predictions' : 'Tahminler'}
                 </a>
-                <Link href={'/dashboard'} className="sgs">
-                  Dashboard
-                </Link>
                 <a
                   href="#"
                   className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
@@ -70,12 +67,17 @@ export default function Navbar({ session }: Props) {
                   {locale === 'en' ? 'Contact' : 'İletişim'}
                 </a>{' '}
                 {session && (
-                  <button
-                    onClick={onLogoutClick}
-                    className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
-                  >
-                    LogOut
-                  </button>
+                  <>
+                    <Link href={'/admin/dashboard'} className="sgs">
+                      Dashboard
+                    </Link>
+                    <button
+                      onClick={onLogoutClick}
+                      className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
+                    >
+                      LogOut
+                    </button>
+                  </>
                 )}
                 <div className=" mx-auto flex justify-center">
                   <Switcher />
