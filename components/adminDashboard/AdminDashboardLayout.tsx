@@ -22,7 +22,6 @@ type Props = {
 };
 
 export default function Example({ children, session }: Props) {
-  console.log('sessionInAdmin-->', session?.user.name);
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const [navigation, setNavigation] = useState(
@@ -33,7 +32,7 @@ export default function Example({ children, session }: Props) {
             href: `/admin/dashboard`,
             icon: HomeIcon,
           },
-          { name: 'Coupons', href: `/admin/coupons`, icon: FolderIcon },
+          { name: 'Bahisler', href: `/admin/bets`, icon: FolderIcon },
         ]
       : [
           {
@@ -42,7 +41,7 @@ export default function Example({ children, session }: Props) {
             icon: HomeIcon,
           },
           { name: 'Tables', href: `/admin/tables`, icon: UsersIcon },
-          { name: 'Coupons', href: `/admin/coupons`, icon: FolderIcon },
+          { name: 'Bahisler', href: `/admin/bets`, icon: FolderIcon },
           {
             name: 'Reports',
             href: `/admin/reports`,

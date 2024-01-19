@@ -1,33 +1,18 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
-const userSchema = new mongoose.Schema(
-  {
-    username: {
-      type: String,
-      required: true,
-      unique: true,
-      min: 3,
-      max: 20,
+const couponSchema = new mongoose.Schema({
+  advisorName: String,
+  description: String,
+  matches: [
+    {
+      matchCode: String,
+      date: String,
+      versus: String,
+      bets: String,
+      odd: { type: Number, default: 1.0 },
     },
-    email: {
-      type: String,
-      required: true,
-      unique: true,
-      max: 50,
-    },
-    password: {
-      type: String,
-    },
-    img: {
-      type: String,
-    },
-    isAdmin: {
-      type: Boolean,
-      default: false,
-    },
-  },
-  { timestamps: true }
-);
+  ],
+});
 
 const postSchema = new mongoose.Schema(
   {
@@ -55,5 +40,27 @@ const postSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-export const User = mongoose.models?.User || mongoose.model("User", userSchema);
-export const Post = mongoose.models?.Post || mongoose.model("Post", postSchema);
+const tipSchema = new mongoose.Schema({
+  day: {
+    type: String,
+  },
+  tips: [
+    {
+      time: String,
+      countryFlagImageUrl: String,
+      country: String,
+      sportIconUrl: String,
+      competition: String,
+      teams: String,
+      tip: String,
+      odds: String,
+      result: String,
+      resultColor: String,
+    },
+  ],
+});
+
+export const Coupon =
+  mongoose.models?.Coupon || mongoose.model('Coupon', couponSchema);
+export const Post = mongoose.models?.Post || mongoose.model('Post', postSchema);
+export const Tip = mongoose.models.Tip || mongoose.model('Tip', tipSchema);

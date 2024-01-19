@@ -7,14 +7,19 @@ export const locales = ['en', 'tr'] as const;
 
 export const pathnames = {
   '/': '/',
+  '/bahisler': {
+    en: '/bets',
+    tr: '/bahisler',
+  },
+  '/bets': {
+    en: '/bets',
+    tr: '/bahisler',
+  },
+  // ADMIN PAGES
   '/admin/dashboard': {
     en: '/admin/dashboard',
     tr: '/admin/dashboard',
   },
-  // '/contact': {
-  //   en: '/contact',
-  //   tr: '/iletisim',
-  // },
 } satisfies Pathnames<typeof locales>;
 
 export const { Link, redirect, usePathname, useRouter } =

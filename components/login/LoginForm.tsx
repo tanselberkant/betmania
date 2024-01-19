@@ -6,8 +6,11 @@ import { useRouter } from 'next/navigation';
 import React, { FormEvent, useState } from 'react';
 import CompanyImage from '../CompanyImage';
 import { Link } from '@/navigation';
+// import { useFormState } from 'react-dom';
 
 const LoginForm = () => {
+  // const [state, formAction] = useFormState(login, undefined);
+
   const locale = useLocale();
   const [error, setError] = useState<string>();
   const router = useRouter();
@@ -52,6 +55,7 @@ const LoginForm = () => {
           method="post"
           onSubmit={onSubmit}
         >
+          {/* <form className="space-y-6" action={formAction} method="post"> */}
           <div>
             <label
               htmlFor="email"

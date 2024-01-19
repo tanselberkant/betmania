@@ -46,12 +46,12 @@ export default function Navbar({ session }: Props) {
                 >
                   {locale === 'en' ? 'Predictions' : 'Tahminler'}
                 </a>
-                <a
-                  href="#"
+                <Link
+                  href={locale === 'en' ? '/bets' : '/bahisler'}
                   className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
                 >
-                  {locale === 'en' ? 'Reliability' : 'Güvenirlik'}
-                </a>
+                  {locale === 'en' ? 'Bets' : 'Bahisler'}
+                </Link>
                 <a
                   href="#"
                   className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
