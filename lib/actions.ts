@@ -17,7 +17,7 @@ export const addBet = async (prevState: any, formData: any) => {
 
     await newCoupon.save();
     console.log('saved to db');
-    revalidatePath('');
+    revalidatePath('/admin/bets');
   } catch (err) {
     console.log(err);
     return { error: 'Something went wrong!' };

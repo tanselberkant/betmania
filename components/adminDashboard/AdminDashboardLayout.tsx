@@ -6,6 +6,7 @@ import {
   Bars3Icon,
   DocumentDuplicateIcon,
   FolderIcon,
+  FolderPlusIcon,
   HomeIcon,
   UsersIcon,
   XMarkIcon,
@@ -13,8 +14,8 @@ import {
 } from '@heroicons/react/24/outline';
 import { classNames } from '@/utils/conditionalClasses';
 import { signOut } from 'next-auth/react';
-import { Link } from '@/navigation';
 import { Session } from 'next-auth';
+import Link from 'next/link';
 
 type Props = {
   children: React.ReactNode;
@@ -33,6 +34,7 @@ export default function Example({ children, session }: Props) {
             icon: HomeIcon,
           },
           { name: 'Bahisler', href: `/admin/bets`, icon: FolderIcon },
+          { name: 'Bahis Ekle', href: `/admin/add-bets`, icon: FolderPlusIcon },
         ]
       : [
           {
@@ -42,6 +44,7 @@ export default function Example({ children, session }: Props) {
           },
           { name: 'Tables', href: `/admin/tables`, icon: UsersIcon },
           { name: 'Bahisler', href: `/admin/bets`, icon: FolderIcon },
+          { name: 'Bahis Ekle', href: `/admin/add-bets`, icon: FolderPlusIcon },
           {
             name: 'Reports',
             href: `/admin/reports`,
@@ -122,7 +125,7 @@ export default function Example({ children, session }: Props) {
                           <ul role="list" className="-mx-2 space-y-1">
                             {navigation.map((item) => (
                               <li key={item.name}>
-                                <a
+                                <Link
                                   href={item.href}
                                   className={classNames(
                                     'text-indigo-200 hover:text-white hover:bg-indigo-700',
@@ -137,7 +140,7 @@ export default function Example({ children, session }: Props) {
                                     aria-hidden="true"
                                   />
                                   {item.name}
-                                </a>
+                                </Link>
                               </li>
                             ))}
 
@@ -185,7 +188,7 @@ export default function Example({ children, session }: Props) {
                   <ul role="list" className="-mx-2 space-y-1">
                     {navigation.map((item) => (
                       <li key={item.name}>
-                        <a
+                        <Link
                           href={item.href}
                           className={classNames(
                             'text-indigo-200 hover:text-white hover:bg-indigo-700',
@@ -200,7 +203,7 @@ export default function Example({ children, session }: Props) {
                             aria-hidden="true"
                           />
                           {item.name}
-                        </a>
+                        </Link>
                       </li>
                     ))}
                     <li key={'111'}>
