@@ -1,10 +1,13 @@
-interface RegisterData {
-  firstName: string;
-  lastName: string;
-  email: string;
-  password: string;
-  passwordConfirm: string;
-  isKvkkAccepted: string;
-  registerFrom: string;
-}
+type BetMatch = {
+  matchCode: string;
+  date: string;
+  versus: string;
+  bets: string;
+  odd: number;
+};
 
+type BetsData = {
+  advisorName: string;
+  description: string;
+  matches: BetMatch[];
+};

@@ -1,41 +1,25 @@
 'use server';
 
 import { revalidatePath } from 'next/cache';
-
 import { connectToDb } from '@/utils/connectDb';
 import { Coupon } from './models';
 
-export const addBet = async (prevState: any, formData: any) => {
-  const { advisorName, matches, description } = Object.fromEntries(formData);
+export const addBet = async (prevState: any, formData: BetsData) => {
+  const { advisorName, matches, description } = formData;
 
   try {
-    connectToDb();
+    await connectToDb();
     const newCoupon = new Coupon({
       advisorName,
       matches,
+      description,
     });
 
     await newCoupon.save();
-    console.log('saved to db');
-    revalidatePath('/admin/bets');
-  } catch (err) {
-    console.log(err);
-    return { error: 'Something went wrong!' };
+    revalidatePath('/', 'layout');
+    return 'Bet saved successfully';
+  } catch (err: any) {
+    console.error(err);
+    return 'An error was encountered while registering a bet';
   }
 };
-
-// export const deletePost = async (formData: any) => {
-//   const { id } = Object.fromEntries(formData);
-
-//   try {
-//     connectToDb();
-
-//     await Post.findByIdAndDelete(id);
-//     console.log('deleted from db');
-//     revalidatePath('/blog');
-//     revalidatePath('/admin');
-//   } catch (err) {
-//     console.log(err);
-//     return { error: 'Something went wrong!' };
-//   }
-// };

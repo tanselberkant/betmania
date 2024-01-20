@@ -52,8 +52,8 @@ const BetsTable = ({ coupon }: Props) => {
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-800">
-                    {coupon.matches.map((match) => (
-                      <tr key={match.matchCode}>
+                    {coupon.matches.map((match, key) => (
+                      <tr key={key}>
                         <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-white sm:pl-0">
                           {match.matchCode}
                         </td>

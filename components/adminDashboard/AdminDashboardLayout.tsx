@@ -33,8 +33,8 @@ export default function Example({ children, session }: Props) {
             href: `/admin/dashboard`,
             icon: HomeIcon,
           },
-          { name: 'Bahisler', href: `/admin/bets`, icon: FolderIcon },
-          { name: 'Bahis Ekle', href: `/admin/add-bets`, icon: FolderPlusIcon },
+          { name: 'Kuponlar', href: `/admin/bets`, icon: FolderIcon },
+          { name: 'Kupon Ekle', href: `/admin/add-bets`, icon: FolderPlusIcon },
         ]
       : [
           {
@@ -43,8 +43,8 @@ export default function Example({ children, session }: Props) {
             icon: HomeIcon,
           },
           { name: 'Tables', href: `/admin/tables`, icon: UsersIcon },
-          { name: 'Bahisler', href: `/admin/bets`, icon: FolderIcon },
-          { name: 'Bahis Ekle', href: `/admin/add-bets`, icon: FolderPlusIcon },
+          { name: 'Kuponlar', href: `/admin/bets`, icon: FolderIcon },
+          { name: 'Kupon Ekle', href: `/admin/add-bets`, icon: FolderPlusIcon },
           {
             name: 'Reports',
             href: `/admin/reports`,
