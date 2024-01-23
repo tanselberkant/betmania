@@ -47,14 +47,15 @@ const BetsTable = ({ coupon, session }: Props) => {
                     {coupon.advisorName}
                   </h1>
                 </Link>
-                <div className="">
+
+                {session === 'admin' && (
                   <form action={deleteBet}>
                     <input type="hidden" name="id" value={coupon._id} />
                     <button className="border-2 border-gray-500 px-3 py-1 text-white rounded-md">
                       Delete
                     </button>
                   </form>
-                </div>
+                )}
               </div>
               <p className="mt-2 text-sm text-gray-300">{coupon.description}</p>
             </div>
