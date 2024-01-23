@@ -1,9 +1,15 @@
+'use client';
+
+import { deleteBet } from '@/lib/actions';
 import Link from 'next/link';
-import React from 'react';
+import { useRouter } from 'next/navigation';
+import React, { useEffect } from 'react';
+import { useFormState } from 'react-dom';
 
 type Props = {
+  session?: string;
   coupon: {
-    id: number | string;
+    _id?: string;
     advisorName: string;
     description: string;
     matches: {
@@ -16,18 +22,40 @@ type Props = {
   };
 };
 
-const BetsTable = ({ coupon }: Props) => {
+const BetsTable = ({ coupon, session }: Props) => {
+  const [state, formAction] = useFormState(deleteBet, undefined);
+  const router = useRouter();
+
+  // CATCHING THE STATE OF THE FORM
+  useEffect(() => {
+    if (state === 'Bet deleted successfully') {
+      router.push('/admin/bets');
+    } else if (state === 'Something went wrong') {
+      alert('Something went wrong');
+    }
+  }, [state, router]);
+
   return (
     <div className="bg-gray-900">
       <div className="mx-auto max-w-7xl py-10 mt-2">
         <div className="px-4 sm:px-6 lg:px-8">
           <div className="sm:flex sm:items-center">
             <div className="sm:flex-auto">
-              <Link href={`/admin/bets/${coupon.advisorName}`}>
-                <h1 className="text-lg font-semibold leading-6 text-white">
-                  {coupon.advisorName}
-                </h1>
-              </Link>
+              <div className=" flex justify-between">
+                <Link href={`/admin/bets/${coupon.advisorName}`}>
+                  <h1 className="text-lg font-semibold leading-6 text-white">
+                    {coupon.advisorName}
+                  </h1>
+                </Link>
+                <div className="">
+                  <form action={deleteBet}>
+                    <input type="hidden" name="id" value={coupon._id} />
+                    <button className="border-2 border-gray-500 px-3 py-1 text-white rounded-md">
+                      Delete
+                    </button>
+                  </form>
+                </div>
+              </div>
               <p className="mt-2 text-sm text-gray-300">{coupon.description}</p>
             </div>
           </div>

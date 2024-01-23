@@ -23,3 +23,22 @@ export const addBet = async (prevState: any, formData: BetsData) => {
     return 'An error was encountered while registering a bet';
   }
 };
+
+export const deleteBet = async (formData: any) => {
+  const { id } = Object.fromEntries(formData);
+  console.log('id-->', id);
+
+  try {
+    connectToDb();
+
+    await Coupon.findByIdAndDelete(id);
+    console.log('deleted from db');
+    revalidatePath('/', 'layout');
+    revalidatePath('/admin');
+
+    return 'Bet deleted successfully';
+  } catch (err) {
+    console.log(err);
+    return 'Something went wrong';
+  }
+};

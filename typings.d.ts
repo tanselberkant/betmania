@@ -7,8 +7,16 @@ type BetMatch = {
 };
 
 type BetsData = {
-  id: string;
+  _id?: string;
   advisorName: string;
   description: string;
   matches: BetMatch[];
+};
+
+type SessionData = {
+  user: {
+    name: string;
+    email: string | any;
+    image: string | any;
+  };
 };
