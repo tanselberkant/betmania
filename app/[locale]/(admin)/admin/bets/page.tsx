@@ -1,11 +1,25 @@
 import BetsTable from '@/components/bets/BetsTable';
 import React from 'react';
 
-const AdminBetsPage = () => {
+const getData = async () => {
+  const res = await fetch('http://localhost:3000/api/coupons', {
+    next: { revalidate: 3600 },
+  });
+
+  if (!res.ok) {
+    throw new Error('Something went wrong');
+  }
+
+  return res.json();
+};
+
+const AdminBetsPage = async () => {
+  const coupons = await getData();
+  // console.log(coupons);
   return (
     <div>
-      {couponExample.map((coupon) => (
-        <BetsTable coupon={coupon} key={coupon.id} />
+      {coupons.map((coupon: BetsData, index: number) => (
+        <BetsTable coupon={coupon} key={index} />
       ))}
     </div>
   );

@@ -7,6 +7,7 @@ type BetMatch = {
 };
 
 type BetsData = {
+  id: string;
   advisorName: string;
   description: string;
   matches: BetMatch[];

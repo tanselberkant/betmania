@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 
 type Props = {
@@ -22,9 +23,11 @@ const BetsTable = ({ coupon }: Props) => {
         <div className="px-4 sm:px-6 lg:px-8">
           <div className="sm:flex sm:items-center">
             <div className="sm:flex-auto">
-              <h1 className="text-lg font-semibold leading-6 text-white">
-                {coupon.advisorName}
-              </h1>
+              <Link href={`/admin/bets/${coupon.advisorName}`}>
+                <h1 className="text-lg font-semibold leading-6 text-white">
+                  {coupon.advisorName}
+                </h1>
+              </Link>
               <p className="mt-2 text-sm text-gray-300">{coupon.description}</p>
             </div>
           </div>
