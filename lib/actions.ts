@@ -26,13 +26,11 @@ export const addBet = async (prevState: any, formData: BetsData) => {
 
 export const deleteBet = async (formData: any) => {
   const { id } = Object.fromEntries(formData);
-  console.log('id-->', id);
 
   try {
     connectToDb();
 
     await Coupon.findByIdAndDelete(id);
-    console.log('deleted from db');
     revalidatePath('/', 'layout');
     revalidatePath('/admin');
 

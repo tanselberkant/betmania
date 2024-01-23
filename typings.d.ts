@@ -20,3 +20,23 @@ type SessionData = {
     image: string | any;
   };
 };
+
+type TipData = {
+  _id?: string;
+  time: string;
+  countryFlagImageUrl: string;
+  country: string;
+  sportIconUrl: string;
+  competition: string;
+  teams: string;
+  tip: string;
+  odds: string;
+  result: string;
+  resultColor: string;
+};
+
+type TipsData = {
+  _id?: string;
+  day: string;
+  tips: TipData[];
+};
