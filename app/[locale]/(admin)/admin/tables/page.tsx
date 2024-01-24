@@ -23,9 +23,8 @@ const AdminTablesPage = async () => {
 
   return (
     <div>
-      <h2>Tables gonna be here</h2>
       {tables.map((table: TipsData, index: number) => (
-        <Table results={table.tips} />
+        <Table key={index} results={table} session={session?.user.name} />
       ))}
     </div>
   );

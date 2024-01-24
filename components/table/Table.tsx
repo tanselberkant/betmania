@@ -1,11 +1,14 @@
+'use client';
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
 type Props = {
-  results: TipData[];
+  session?: string | null;
+  results: TipsData;
 };
 
-const Table = ({ results }: Props) => {
+const Table = ({ results, session }: Props) => {
   console.log(results);
   const theads = [
     'Time',
@@ -20,9 +23,21 @@ const Table = ({ results }: Props) => {
 
   return (
     <>
-      <h3 className="text-green-800 text-4xl my-5">
-        20.12.2023 - TIPS OF DAY{' '}
-      </h3>
+      <div className="flex justify-between items-center ">
+        <h3 className="text-green-800 text-4xl my-5">
+          20.12.2023 - TIPS OF DAY{' '}
+        </h3>
+        {session === 'admin' && (
+          <Link
+            className="mr-4 border-2 rounded-md px-4 p-1 border-green-700"
+            href={`/admin/tables/${results._id}`}
+          >
+            <h1 className="text-lg font-semibold leading-6 text-black">
+              Update
+            </h1>
+          </Link>
+        )}
+      </div>
       <div className="relative  bg-green-800">
         <table className="w-full text-sm text-left rtl:text-right ">
           <thead className="text-sm text-white uppercase bg-green-800 ">
@@ -35,7 +50,7 @@ const Table = ({ results }: Props) => {
             </tr>
           </thead>
           <tbody>
-            {results.map((item: TipData) => {
+            {results.tips.map((item: TipData) => {
               if (!item.competition) {
                 // Eğer competition yoksa, bu öğeyi atla
                 return null;
