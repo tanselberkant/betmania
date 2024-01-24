@@ -4,6 +4,7 @@ import { revalidatePath } from 'next/cache';
 import { connectToDb } from '@/utils/connectDb';
 import { Coupon, Tip } from './models';
 
+// >>>>>> COUPON ACTIONS
 export const addBet = async (prevState: any, formData: BetsData) => {
   const { advisorName, matches, description } = formData;
 
@@ -41,8 +42,11 @@ export const deleteBet = async (formData: any) => {
   }
 };
 
+// >>>>>> TABLE ACTIONS
 export const addTable = async (prevState: any, formData: TipsData) => {
   const { day, tips } = formData;
+
+  if (!day || day === '') return 'No date provided';
 
   try {
     await connectToDb();
@@ -56,6 +60,23 @@ export const addTable = async (prevState: any, formData: TipsData) => {
     return 'Table saved successfully';
   } catch (err: any) {
     console.error(err);
+    return 'Something went wrong';
+  }
+};
+
+export const deleteTable = async (formData: any) => {
+  const { id } = Object.fromEntries(formData);
+
+  try {
+    connectToDb();
+
+    await Tip.findByIdAndDelete(id);
+    revalidatePath('/', 'layout');
+    revalidatePath('/admin');
+
+    return 'Table deleted successfully';
+  } catch (err) {
+    console.log(err);
     return 'Something went wrong';
   }
 };

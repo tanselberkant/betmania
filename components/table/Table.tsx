@@ -145,7 +145,8 @@ const Table = ({ results, session }: Props) => {
           </tbody>
         </table>
         <p className="text-center my-2">
-          Toplam Oran: {allOdds} | Seçtiğiniz Oran: {totalOdds}
+          Toplam Oran: {allOdds.toFixed(2)} | Seçtiğiniz Oran:{' '}
+          {totalOdds.toFixed(2)}
         </p>
       </div>
     </>

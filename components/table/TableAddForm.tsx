@@ -16,6 +16,8 @@ const TableAddForm = () => {
       router.push('/admin/tables');
     } else if (state === 'Something went wrong') {
       setErrorMessage('An error occurred. Please try again.');
+    } else if (state === 'No date provided') {
+      setErrorMessage('Gün Girmediniz');
     }
   }, [state, router]);
 
@@ -38,23 +40,6 @@ const TableAddForm = () => {
       },
     ],
   });
-
-  // // HANDLING INPUT CHANGES
-  // const handleInputChange = (
-  //   e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
-  //   index = 0
-  // ) => {
-  //   const { name, value } = e.target;
-
-  //   if (name === 'advisorName' || name === 'description') {
-  //     setFormData({ ...formData, [name]: value });
-  //   } else {
-  //     const updatedMatches = formData.tips.map((match, idx) =>
-  //       index === idx ? { ...match, [name]: value } : match
-  //     );
-  //     setFormData({ ...formData, tips: updatedMatches });
-  //   }
-  // };
 
   // HANDLING INPUT CHANGES
   const handleInputChange = (

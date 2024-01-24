@@ -1,10 +1,13 @@
 'use client';
+import { deleteTable } from '@/lib/actions';
 import { adjustTimeForLocale } from '@/utils/adjustTimeForLocale';
 import { convertDate } from '@/utils/convertDate';
 import { useLocale } from 'next-intl';
 // import Image from 'next/image';
 import Link from 'next/link';
-import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import React, { useEffect, useState } from 'react';
+import { useFormState } from 'react-dom';
 import { PiSoccerBallLight } from 'react-icons/pi';
 
 type Props = {
@@ -12,20 +15,31 @@ type Props = {
   results: TipsData;
 };
 
+const theads = [
+  'Time',
+  'Sport',
+  'Country',
+  'Competitions',
+  'Teams',
+  'Tip',
+  'Odds',
+  'Results',
+];
+
 const AdminTable = ({ results, session }: Props) => {
   const locale = useLocale();
   const { day, dayEng } = convertDate(results.day);
+  const [state, formAction] = useFormState(deleteTable, undefined);
+  const router = useRouter();
 
-  const theads = [
-    'Time',
-    'Sport',
-    'Country',
-    'Competitions',
-    'Teams',
-    'Tip',
-    'Odds',
-    'Results',
-  ];
+  // CATCHING THE STATE OF THE FORM
+  useEffect(() => {
+    if (state === 'Table deleted successfully') {
+      router.push('/admin/tables');
+    } else if (state === 'Something went wrong') {
+      alert('Something went wrong');
+    }
+  }, [state, router]);
 
   return (
     <>
@@ -36,14 +50,22 @@ const AdminTable = ({ results, session }: Props) => {
             : `${dayEng} - Tips Of Day`}
         </h3>
         {session === 'admin' && (
-          <Link
-            className="mr-4 border-2 rounded-md px-4 p-1 border-green-700"
-            href={`/admin/tables/${results._id}`}
-          >
-            <h1 className="text-lg font-semibold leading-6 text-black">
-              Update
-            </h1>
-          </Link>
+          <div className="flex ">
+            <Link
+              className="mr-4 border-2 rounded-md px-4 p-1 border-green-700"
+              href={`/admin/tables/${results._id}`}
+            >
+              <h1 className="text-lg font-semibold leading-6 text-black">
+                Update
+              </h1>
+            </Link>
+            <form action={deleteTable}>
+              <input type="hidden" name="id" value={results._id} />
+              <button className="mr-4 border-2 rounded-md px-4 p-1 border-red-700 text-red-700">
+                Delete
+              </button>
+            </form>
+          </div>
         )}
       </div>
       <div className="relative  bg-green-800">
