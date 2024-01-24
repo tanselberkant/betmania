@@ -4,7 +4,7 @@ import { convertDate } from '@/utils/convertDate';
 import { useLocale } from 'next-intl';
 // import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
 import { PiSoccerBallLight } from 'react-icons/pi';
 
 type Props = {
@@ -14,9 +14,30 @@ type Props = {
 
 const Table = ({ results, session }: Props) => {
   const locale = useLocale();
-  // console.log(results);
-
   const { day, dayEng } = convertDate(results.day);
+
+  const [selectedOdds, setSelectedOdds] = useState<number[]>([]);
+
+  const handleCheckboxChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    odds: string
+  ) => {
+    const checked = e.target.checked;
+    const oddsValue = parseFloat(odds);
+    if (checked) {
+      setSelectedOdds([...selectedOdds, oddsValue]);
+    } else {
+      setSelectedOdds(selectedOdds.filter((item) => item !== oddsValue));
+    }
+  };
+
+  const totalOdds = selectedOdds.reduce((total, odds) => total * odds, 1);
+
+  const calculateTotalOdds = () => {
+    return results.tips.reduce((total, tip) => total * parseFloat(tip.odds), 1);
+  };
+
+  const allOdds = calculateTotalOdds();
 
   const theads =
     locale === 'tr'
@@ -115,10 +136,7 @@ const Table = ({ results, session }: Props) => {
                   <td className="pl-7 py-4">
                     <input
                       type="checkbox"
-                      onChange={
-                        (e) => console.log('here')
-                        // handleCheckboxChange(e.target.checked, item.odds)
-                      }
+                      onChange={(e) => handleCheckboxChange(e, item.odds)}
                     />
                   </td>
                 </tr>
@@ -126,6 +144,9 @@ const Table = ({ results, session }: Props) => {
             })}
           </tbody>
         </table>
+        <p className="text-center my-2">
+          Toplam Oran: {allOdds} | Seçtiğiniz Oran: {totalOdds}
+        </p>
       </div>
     </>
   );
