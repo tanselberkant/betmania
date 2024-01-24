@@ -3,7 +3,6 @@ import { connectToDb } from '@/utils/connectDb';
 import { NextResponse, NextRequest } from 'next/server';
 
 export const GET = async (request: NextRequest) => {
-  // console.log('request--->', request);
   try {
     connectToDb();
     const advisorName = request.nextUrl.searchParams.get('advisorName');
@@ -13,7 +12,8 @@ export const GET = async (request: NextRequest) => {
       query = { advisorName: advisorName };
     }
 
-    const coupons = await Coupon.find(query);
+    // const coupons = await Coupon.find(query);
+    const coupons = await Coupon.find(query).sort({ createdAt: -1 });
     return NextResponse.json(coupons);
   } catch (err) {
     console.log(err);

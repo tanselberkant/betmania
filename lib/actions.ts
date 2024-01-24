@@ -2,7 +2,7 @@
 
 import { revalidatePath } from 'next/cache';
 import { connectToDb } from '@/utils/connectDb';
-import { Coupon } from './models';
+import { Coupon, Tip } from './models';
 
 export const addBet = async (prevState: any, formData: BetsData) => {
   const { advisorName, matches, description } = formData;
@@ -37,6 +37,25 @@ export const deleteBet = async (formData: any) => {
     return 'Bet deleted successfully';
   } catch (err) {
     console.log(err);
+    return 'Something went wrong';
+  }
+};
+
+export const addTable = async (prevState: any, formData: TipsData) => {
+  const { day, tips } = formData;
+
+  try {
+    await connectToDb();
+    const newCoupon = new Tip({
+      day,
+      tips,
+    });
+
+    await newCoupon.save();
+    revalidatePath('/', 'layout');
+    return 'Table saved successfully';
+  } catch (err: any) {
+    console.error(err);
     return 'Something went wrong';
   }
 };

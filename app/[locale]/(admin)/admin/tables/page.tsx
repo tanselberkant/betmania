@@ -1,7 +1,5 @@
-import BetsTable from '@/components/bets/BetsTable';
-import Table from '@/components/table/Table';
+import AdminTable from '@/components/table/AdminTable';
 import auth from '@/lib/auth';
-import { table } from 'console';
 import { getServerSession } from 'next-auth';
 import React from 'react';
 
@@ -24,7 +22,7 @@ const AdminTablesPage = async () => {
   return (
     <div>
       {tables.map((table: TipsData, index: number) => (
-        <Table key={index} results={table} session={session?.user.name} />
+        <AdminTable key={index} results={table} session={session?.user.name} />
       ))}
     </div>
   );

@@ -1,18 +1,25 @@
 import mongoose from 'mongoose';
 
-const couponSchema = new mongoose.Schema({
-  advisorName: String,
-  description: String,
-  matches: [
-    {
-      matchCode: String,
-      date: String,
-      versus: String,
-      bets: String,
-      odd: { type: Number, default: 1.0 },
+const couponSchema = new mongoose.Schema(
+  {
+    date: {
+      type: Date,
+      default: Date.now, // Şu anki zamanı varsayılan olarak ayarlar
     },
-  ],
-});
+    advisorName: String,
+    description: String,
+    matches: [
+      {
+        matchCode: String,
+        date: String,
+        versus: String,
+        bets: String,
+        odd: { type: Number, default: 1.0 },
+      },
+    ],
+  },
+  { timestamps: true }
+);
 
 const postSchema = new mongoose.Schema(
   {
@@ -40,25 +47,28 @@ const postSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const tipSchema = new mongoose.Schema({
-  day: {
-    type: String,
-  },
-  tips: [
-    {
-      time: String,
-      countryFlagImageUrl: String,
-      country: String,
-      sportIconUrl: String,
-      competition: String,
-      teams: String,
-      tip: String,
-      odds: String,
-      result: String,
-      resultColor: String,
+const tipSchema = new mongoose.Schema(
+  {
+    day: {
+      type: String,
     },
-  ],
-});
+    tips: [
+      {
+        time: String,
+        countryFlagImageUrl: String,
+        country: String,
+        sportIconUrl: String,
+        competition: String,
+        teams: String,
+        tip: String,
+        odds: String,
+        result: String,
+        resultColor: String,
+      },
+    ],
+  },
+  { timestamps: true }
+);
 
 export const Coupon =
   mongoose.models?.Coupon || mongoose.model('Coupon', couponSchema);

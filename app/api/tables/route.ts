@@ -12,7 +12,8 @@ export const GET = async (request: NextRequest) => {
       query = { _id: id };
     }
 
-    const tables = await Tip.find(query);
+    // En yeni öğeleri en önce getir
+    const tables = await Tip.find(query).sort({ createdAt: -1 });
     return NextResponse.json(tables);
   } catch (err) {
     console.log(err);

@@ -42,7 +42,8 @@ export default function Example({ children, session }: Props) {
             href: `/admin/dashboard`,
             icon: HomeIcon,
           },
-          { name: 'Tables', href: `/admin/tables`, icon: UsersIcon },
+          { name: 'Tablolar', href: `/admin/tables`, icon: UsersIcon },
+          { name: 'Tablo Ekle', href: `/admin/add-table`, icon: UsersIcon },
           { name: 'Kuponlar', href: `/admin/bets`, icon: FolderIcon },
           { name: 'Kupon Ekle', href: `/admin/add-bets`, icon: FolderPlusIcon },
           {
@@ -174,7 +175,7 @@ export default function Example({ children, session }: Props) {
         </Transition.Root>
 
         {/* Static sidebar for desktop */}
-        <div className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
+        <div className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-52  lg:flex-col">
           {/* Sidebar component, swap this element with another sidebar if you like */}
           <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-indigo-600 px-6">
             <div className="flex h-16 shrink-0 items-center ">
@@ -242,7 +243,7 @@ export default function Example({ children, session }: Props) {
           </button>
         </div>
 
-        <main className="py-10 lg:pl-72">
+        <main className="py-10 lg:pl-52">
           <div className="px-4 sm:px-6 lg:px-8">{children}</div>
         </main>
       </div>

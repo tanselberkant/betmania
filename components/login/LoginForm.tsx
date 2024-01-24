@@ -20,7 +20,7 @@ const LoginForm = () => {
     if (error) setError(undefined);
 
     const formData = new FormData(event.currentTarget);
-    console.log('formData', formData);
+    // console.log('formData', formData);
     await signIn('credentials', {
       username: formData.get('username'),
       password: formData.get('password'),

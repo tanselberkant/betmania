@@ -4,7 +4,7 @@ import { convertDate } from '@/utils/convertDate';
 import { useLocale } from 'next-intl';
 // import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
 import { PiSoccerBallLight } from 'react-icons/pi';
 
 type Props = {
@@ -12,40 +12,24 @@ type Props = {
   results: TipsData;
 };
 
-const Table = ({ results, session }: Props) => {
+const AdminTable = ({ results, session }: Props) => {
   const locale = useLocale();
-  // console.log(results);
-
   const { day, dayEng } = convertDate(results.day);
 
-  const theads =
-    locale === 'tr'
-      ? [
-          'Saat',
-          'Branş',
-          'Ülke',
-          'Turnuva',
-          'Takımlar',
-          'Tahmin',
-          'Oran',
-          'Sonuç',
-          'Ekle',
-        ]
-      : [
-          'Time',
-          'Sport',
-          'Country',
-          'Competitions',
-          'Teams',
-          'Tip',
-          'Odds',
-          'Results',
-          'Add',
-        ];
+  const theads = [
+    'Time',
+    'Sport',
+    'Country',
+    'Competitions',
+    'Teams',
+    'Tip',
+    'Odds',
+    'Results',
+  ];
 
   return (
     <>
-      <div className="flex justify-between items-center  ">
+      <div className="flex justify-between items-center ">
         <h3 className="text-green-800 text-4xl my-5">
           {locale === 'tr'
             ? `${day} - Günün Bahisleri`
@@ -62,9 +46,9 @@ const Table = ({ results, session }: Props) => {
           </Link>
         )}
       </div>
-      <div className="relative  bg-indigo-400 rounded-t-md">
+      <div className="relative  bg-green-800">
         <table className="w-full text-sm text-left rtl:text-right ">
-          <thead className="text-sm text-white uppercase bg-indigo-400 ">
+          <thead className="text-sm text-white uppercase bg-green-800 ">
             <tr>
               {theads.map((item, index) => (
                 <th key={index} scope="col" className="px-6 py-3">
@@ -111,16 +95,6 @@ const Table = ({ results, session }: Props) => {
                   <td className="px-6 py-4">{item.tip} </td>
                   <td className="px-6 py-4">{item.odds} </td>
                   <td className="px-11 py-4">{item.result} </td>
-                  {/* CHECKBOX */}
-                  <td className="pl-7 py-4">
-                    <input
-                      type="checkbox"
-                      onChange={
-                        (e) => console.log('here')
-                        // handleCheckboxChange(e.target.checked, item.odds)
-                      }
-                    />
-                  </td>
                 </tr>
               );
             })}
@@ -131,4 +105,4 @@ const Table = ({ results, session }: Props) => {
   );
 };
 
-export default Table;
+export default AdminTable;
