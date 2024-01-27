@@ -85,7 +85,7 @@ const TableAddForm = () => {
     });
   };
 
-  // REMOVING A BET
+  // REMOVING MATCH
   const removeMatch = (index: number) => {
     setFormData({
       ...formData,

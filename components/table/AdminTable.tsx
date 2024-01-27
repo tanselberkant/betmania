@@ -1,14 +1,11 @@
 'use client';
-
 import { adjustTimeForLocale } from '@/utils/adjustTimeForLocale';
 import { classNames } from '@/utils/conditionalClasses';
 import { convertDate } from '@/utils/convertDate';
 import { useLocale } from 'next-intl';
-// import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
-import { useFormState } from 'react-dom';
 import { PiSoccerBallLight } from 'react-icons/pi';
 
 type Props = {
@@ -78,15 +75,6 @@ const AdminTable = ({ results, session }: Props) => {
                   <td className="px-6 py-4">
                     {adjustTimeForLocale(item.time, locale)}{' '}
                   </td>
-                  {/* <td className="px-6 py-4">
-                    <Image
-                      src={item.countryFlagImageUrl}
-                      alt={`${item.country} flag`}
-                      className="h-5 w-5"
-                      width={500}
-                      height={500}
-                    />
-                  </td> */}
                   <td className="px-6 py-4">
                     <PiSoccerBallLight
                       color="FF0000"

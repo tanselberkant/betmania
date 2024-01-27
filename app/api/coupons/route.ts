@@ -12,7 +12,6 @@ export const GET = async (request: NextRequest) => {
       query = { advisorName: advisorName };
     }
 
-    // const coupons = await Coupon.find(query);
     const coupons = await Coupon.find(query).sort({ createdAt: -1 });
     return NextResponse.json(coupons);
   } catch (err) {

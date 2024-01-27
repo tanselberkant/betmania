@@ -34,10 +34,10 @@ const Table = ({ results, session }: Props) => {
   };
 
   const totalOdds = selectedOdds.reduce((total, odds) => total * odds, 1);
-  const allOdds = results.tips.reduce(
-    (total, tip) => total * parseFloat(tip.odds),
-    1
-  );
+  // const allOdds = results.tips.reduce(
+  //   (total, tip) => total * parseFloat(tip.odds),
+  //   1
+  // );
 
   const theads =
     locale === 'tr'

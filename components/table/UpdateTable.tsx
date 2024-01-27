@@ -1,7 +1,6 @@
 'use client';
 
 import { convertDate } from '@/utils/convertDate';
-import { useLocale } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 
@@ -14,10 +13,9 @@ const theads = ['Competitions', 'Teams', 'Tip', 'Odds', 'Results', 'Win'];
 
 const UpdateTable = ({ results, session }: Props) => {
   const router = useRouter();
-  const locale = useLocale();
 
+  // DELETING TABLE
   const [isDeleting, setIsDeleting] = useState(false);
-
   const handleDelete = async () => {
     setIsDeleting(true);
     try {
@@ -45,8 +43,9 @@ const UpdateTable = ({ results, session }: Props) => {
   };
 
   const [tips, setTips] = useState<TipData[]>(results.tips);
-  const { day, dayEng } = convertDate(results.day);
+  const { day } = convertDate(results.day);
 
+  // INPUT ONCHANGE
   const handleInputChange = (
     index: number,
     fieldName: string,
@@ -66,6 +65,7 @@ const UpdateTable = ({ results, session }: Props) => {
     setTips(updatedTips);
   };
 
+  // SUBMITTIN FORM
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // console.log('Güncellenen Tips:', tips);
@@ -91,11 +91,7 @@ const UpdateTable = ({ results, session }: Props) => {
   return (
     <>
       <div className="flex justify-between items-center ">
-        <h3 className="text-green-800 text-4xl my-5">
-          {locale === 'tr'
-            ? `${day} - Günün Bahisleri`
-            : `${dayEng} - Tips Of Day`}
-        </h3>
+        <h3 className="text-green-800 text-4xl my-5">{day} - Günü Datası</h3>
         {session === 'admin' && (
           <button
             onClick={handleDelete}

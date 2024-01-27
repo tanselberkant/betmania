@@ -26,11 +26,9 @@ export const PUT = async (request: NextRequest) => {
   try {
     const body = await request.json();
     // console.log(body);
-
-    // Veritabanına bağlan
     await connectToDb();
 
-    // Veritabanında güncelleme yap
+    // UPDATE DATA
     const updatedTable = await Tip.findByIdAndUpdate(
       body.id,
       { $set: { tips: body.tips } },
@@ -55,17 +53,17 @@ export const PUT = async (request: NextRequest) => {
 
 export const DELETE = async (request: NextRequest) => {
   try {
-    // Veritabanına bağlan
     await connectToDb();
 
-    // İstekten ID al
+    // Getting ID
     const id = request.nextUrl.searchParams.get('id');
 
-    // Veritabanında silme işlemi yap
+    // Deleting Data
     await Tip.findByIdAndDelete(id);
 
     revalidatePath('/', 'layout');
     revalidatePath('/admin');
+
     return NextResponse.json({
       success: true,
       message: 'Table deleted successfully',
