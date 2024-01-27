@@ -243,7 +243,7 @@ export default function Example({ children, session }: Props) {
           </button>
         </div>
 
-        <main className="py-10 lg:pl-52">
+        <main className="py-10 lg:pl-52 ">
           <div className="px-4 sm:px-6 lg:px-8">{children}</div>
         </main>
       </div>

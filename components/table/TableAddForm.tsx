@@ -37,6 +37,7 @@ const TableAddForm = () => {
         odds: '',
         result: '?',
         resultColor: '#008000',
+        win: 'win',
       },
     ],
   });
@@ -78,6 +79,7 @@ const TableAddForm = () => {
           odds: '',
           result: '?',
           resultColor: '#008000',
+          win: 'win',
         },
       ],
     });

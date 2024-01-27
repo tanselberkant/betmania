@@ -33,6 +33,7 @@ type TipData = {
   odds: string;
   result: string;
   resultColor: string;
+  win: string;
 };
 
 type TipsData = {

@@ -64,6 +64,7 @@ const tipSchema = new mongoose.Schema(
         odds: String,
         result: String,
         resultColor: String,
+        win: { type: String, default: 'win' },
       },
     ],
   },

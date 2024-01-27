@@ -1,6 +1,7 @@
 'use client';
-import { deleteTable } from '@/lib/actions';
+
 import { adjustTimeForLocale } from '@/utils/adjustTimeForLocale';
+import { classNames } from '@/utils/conditionalClasses';
 import { convertDate } from '@/utils/convertDate';
 import { useLocale } from 'next-intl';
 // import Image from 'next/image';
@@ -29,17 +30,8 @@ const theads = [
 const AdminTable = ({ results, session }: Props) => {
   const locale = useLocale();
   const { day, dayEng } = convertDate(results.day);
-  const [state, formAction] = useFormState(deleteTable, undefined);
-  const router = useRouter();
 
-  // CATCHING THE STATE OF THE FORM
-  useEffect(() => {
-    if (state === 'Table deleted successfully') {
-      router.push('/admin/tables');
-    } else if (state === 'Something went wrong') {
-      alert('Something went wrong');
-    }
-  }, [state, router]);
+  const router = useRouter();
 
   return (
     <>
@@ -50,22 +42,14 @@ const AdminTable = ({ results, session }: Props) => {
             : `${dayEng} - Tips Of Day`}
         </h3>
         {session === 'admin' && (
-          <div className="flex ">
-            <Link
-              className="mr-4 border-2 rounded-md px-4 p-1 border-green-700"
-              href={`/admin/tables/${results._id}`}
-            >
-              <h1 className="text-lg font-semibold leading-6 text-black">
-                Update
-              </h1>
-            </Link>
-            <form action={deleteTable}>
-              <input type="hidden" name="id" value={results._id} />
-              <button className="mr-4 border-2 rounded-md px-4 p-1 border-red-700 text-red-700">
-                Delete
-              </button>
-            </form>
-          </div>
+          <Link
+            className="mr-4 border-2 rounded-md px-4 p-1 border-green-700"
+            href={`/admin/tables/${results._id}`}
+          >
+            <h1 className="text-lg font-semibold leading-6 text-black">
+              Update - Delete
+            </h1>
+          </Link>
         )}
       </div>
       <div className="relative  bg-green-800">
@@ -116,7 +100,14 @@ const AdminTable = ({ results, session }: Props) => {
                   </td>
                   <td className="px-6 py-4">{item.tip} </td>
                   <td className="px-6 py-4">{item.odds} </td>
-                  <td className="px-11 py-4">{item.result} </td>
+                  <td
+                    className={classNames(
+                      item.win === 'win' ? 'text-green-600' : 'text-red-700',
+                      'px-11 py-4'
+                    )}
+                  >
+                    {item.result}
+                  </td>
                 </tr>
               );
             })}

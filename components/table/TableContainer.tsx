@@ -4,7 +4,7 @@ import Table from './Table';
 
 const getTableData = async () => {
   const res = await fetch('http://localhost:3000/api/tables', {
-    next: { revalidate: 3600 },
+    // next: { revalidate: 3600 },
   });
 
   if (!res.ok) {
