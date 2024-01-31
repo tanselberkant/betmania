@@ -21,32 +21,6 @@ const couponSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const postSchema = new mongoose.Schema(
-  {
-    title: {
-      type: String,
-      required: true,
-    },
-    desc: {
-      type: String,
-      required: true,
-    },
-    img: {
-      type: String,
-    },
-    userId: {
-      type: String,
-      required: true,
-    },
-    slug: {
-      type: String,
-      required: true,
-      unique: true,
-    },
-  },
-  { timestamps: true }
-);
-
 const tipSchema = new mongoose.Schema(
   {
     day: {
@@ -67,6 +41,43 @@ const tipSchema = new mongoose.Schema(
         win: { type: String, default: 'win' },
       },
     ],
+  },
+  { timestamps: true }
+);
+
+const postSchema = new mongoose.Schema(
+  {
+    title: {
+      type: String,
+      required: true,
+    },
+    desc: {
+      type: String,
+      required: true,
+    },
+    imgUrl: {
+      type: String,
+    },
+    slug: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    authorName: {
+      type: String,
+    },
+    metaDescription: {
+      type: String,
+    },
+    metaKeyword: {
+      type: String,
+    },
+    metaTitle: {
+      type: String,
+    },
+    content: {
+      type: String,
+    },
   },
   { timestamps: true }
 );

@@ -11,6 +11,8 @@ import {
   UsersIcon,
   XMarkIcon,
   UserIcon,
+  CakeIcon,
+  LinkIcon,
 } from '@heroicons/react/24/outline';
 import { classNames } from '@/utils/conditionalClasses';
 import { signOut } from 'next-auth/react';
@@ -46,6 +48,8 @@ export default function Example({ children, session }: Props) {
           { name: 'Tablo Ekle', href: `/admin/add-table`, icon: UsersIcon },
           { name: 'Kuponlar', href: `/admin/bets`, icon: FolderIcon },
           { name: 'Kupon Ekle', href: `/admin/add-bets`, icon: FolderPlusIcon },
+          { name: 'Posts', href: `/admin/posts`, icon: CakeIcon },
+          { name: 'Post Ekle', href: `/admin/add-posts`, icon: LinkIcon },
           {
             name: 'Reports',
             href: `/admin/reports`,

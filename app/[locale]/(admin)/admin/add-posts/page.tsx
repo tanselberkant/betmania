@@ -1,11 +1,12 @@
 import BetsTable from '@/components/bets/BetsTable';
+import PostAddForm from '@/components/posts/PostAddForm';
 import auth from '@/lib/auth';
 import { getServerSession } from 'next-auth';
 import React from 'react';
 
 const getData = async () => {
-  const res = await fetch('http://localhost:3000/api/coupons', {
-    next: { revalidate: 10 },
+  const res = await fetch('http://localhost:3000/api/posts', {
+    next: { revalidate: 3600 },
   });
 
   if (!res.ok) {
@@ -15,17 +16,15 @@ const getData = async () => {
   return res.json();
 };
 
-const AdminBetsPage = async () => {
+const AdminAddPostPage = async () => {
   const session = await getServerSession(auth);
-  const coupons = await getData();
+  //   const coupons = await getData();
 
   return (
     <div>
-      {coupons.map((coupon: BetsData, index: number) => (
-        <BetsTable coupon={coupon} key={index} session={session?.user.name} />
-      ))}
+      <PostAddForm />
     </div>
   );
 };
 
-export default AdminBetsPage;
+export default AdminAddPostPage;

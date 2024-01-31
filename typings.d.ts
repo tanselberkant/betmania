@@ -41,3 +41,21 @@ type TipsData = {
   day: string;
   tips: TipData[];
 };
+
+type PostData = {
+  _id?: string;
+  title: string;
+  slug: string;
+  desc: string;
+  imgUrl: string;
+  authorName: string;
+  metaDescription: string;
+  metaKeyword: string;
+  metaTitle: string;
+  content: string;
+};
+
+type PostsData = {
+  _id?: string;
+  posts: PostData[];
+};

@@ -2,7 +2,7 @@
 
 import { revalidatePath } from 'next/cache';
 import { connectToDb } from '@/utils/connectDb';
-import { Coupon, Tip } from './models';
+import { Coupon, Tip, Post } from './models';
 
 // >>>>>> COUPON ACTIONS
 export const addBet = async (prevState: any, formData: BetsData) => {
@@ -75,6 +75,65 @@ export const deleteTable = async (formData: any) => {
     revalidatePath('/admin');
 
     return 'Table deleted successfully';
+  } catch (err) {
+    console.log(err);
+    return 'Something went wrong';
+  }
+};
+
+// >>>>>> POST ACTIONS
+export const addPost = async (prevState: any, formData: any) => {
+  const {
+    metaDescription,
+    metaKeyword,
+    metaTitle,
+    title,
+    slug,
+    desc,
+    imgUrl,
+    authorName,
+    content,
+  } = Object.fromEntries(formData);
+
+  try {
+    connectToDb();
+    const newPost = new Post({
+      metaDescription,
+      metaKeyword,
+      metaTitle,
+      title,
+      slug,
+      desc,
+      imgUrl,
+      authorName,
+      content,
+    });
+
+    await newPost.save();
+    console.log('saved to db');
+    revalidatePath('/', 'layout');
+    revalidatePath('/admin');
+    return 'Post added successfully';
+  } catch (err) {
+    console.log(err);
+    return 'Something went wrong';
+  }
+};
+
+export const deletePost = async (formData: any) => {
+  const { id } = Object.fromEntries(formData);
+
+  // console.log('here??', id);
+
+  try {
+    connectToDb();
+
+    await Post.findByIdAndDelete(id);
+    console.log('deleted from db');
+    revalidatePath('/', 'layout');
+    revalidatePath('/admin');
+
+    return 'Post deleted successfully';
   } catch (err) {
     console.log(err);
     return 'Something went wrong';
