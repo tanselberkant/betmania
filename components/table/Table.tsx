@@ -7,6 +7,27 @@ import { classNames } from '@/utils/conditionalClasses';
 import { adjustTimeForLocale } from '@/utils/adjustTimeForLocale';
 import { PiSoccerBallLight } from 'react-icons/pi';
 
+type TipData = {
+  _id: string;
+  time: string;
+  countryFlagImageUrl: string;
+  country: string;
+  sportIconUrl: string;
+  competition: string;
+  teams: string;
+  tip: string;
+  odds: string;
+  result: string;
+  resultColor: string;
+  win: string;
+};
+
+type TipsData = {
+  _id: string;
+  day: string;
+  tips: TipData[];
+};
+
 type Props = {
   session?: string | null;
   results: TipsData;
@@ -16,28 +37,25 @@ const Table = ({ results, session }: Props) => {
   const locale = useLocale();
   const { day, dayEng } = convertDate(results.day);
 
-  // Başlangıçta tüm oranları seçili olarak ayarlayın
-  const initialOdds = results.tips.map((tip) => parseFloat(tip.odds));
-  const [selectedOdds, setSelectedOdds] = useState<number[]>(initialOdds);
+  // Başlangıçta tüm tip ID'lerini seçili olarak ayarlayın
+  const initialTipIds = results.tips.map((tip) => tip._id);
+  const [selectedTipIds, setSelectedTipIds] = useState<string[]>(initialTipIds);
 
   const handleCheckboxChange = (
     e: React.ChangeEvent<HTMLInputElement>,
-    odds: string
+    tipId: string
   ) => {
     const checked = e.target.checked;
-    const oddsValue = parseFloat(odds);
     if (checked) {
-      setSelectedOdds([...selectedOdds, oddsValue]);
+      setSelectedTipIds([...selectedTipIds, tipId]);
     } else {
-      setSelectedOdds(selectedOdds.filter((item) => item !== oddsValue));
+      setSelectedTipIds(selectedTipIds.filter((id) => id !== tipId));
     }
   };
 
-  const totalOdds = selectedOdds.reduce((total, odds) => total * odds, 1);
-  // const allOdds = results.tips.reduce(
-  //   (total, tip) => total * parseFloat(tip.odds),
-  //   1
-  // );
+  const totalOdds = results.tips
+    .filter((tip) => selectedTipIds.includes(tip._id))
+    .reduce((total, tip) => total * parseFloat(tip.odds), 1);
 
   const theads =
     locale === 'tr'
@@ -100,7 +118,6 @@ const Table = ({ results, session }: Props) => {
                 return null;
               }
 
-              const oddsValue = parseFloat(item.odds);
               return (
                 <tr
                   key={item._id}
@@ -133,8 +150,8 @@ const Table = ({ results, session }: Props) => {
                   <td className="pl-7 py-4">
                     <input
                       type="checkbox"
-                      onChange={(e) => handleCheckboxChange(e, item.odds)}
-                      checked={selectedOdds.includes(oddsValue)}
+                      onChange={(e) => handleCheckboxChange(e, item._id)}
+                      checked={selectedTipIds.includes(item._id)}
                     />
                   </td>
                 </tr>
@@ -153,3 +170,27 @@ const Table = ({ results, session }: Props) => {
 };
 
 export default Table;
+
+// Tanıtım Metni Önerisi:
+// "BetOrbit'e Hoş Geldiniz - Bahis Evreniniz! Yıldızlar arası en keskin bahis tavsiyeleri, maç analizleri ve kazanma stratejileriyle galaksiler ötesi bir keşfe çıkın. Futbolun büyüleyici dünyasında, her bir maç bir gezegen kadar zengin ve çeşitli. BetOrbit, size bu evrende gezinirken, en değerli bahis fırsatlarını bulmanız için rehberlik eder. Galaksi içindeki en iyi oranlar, yıldız futbolcuların performans analizleri ve kupon tavsiyeleriyle, bahis galaksinizdeki hakimiyetinizi sağlamlaştırın. BetOrbit, bahisçilerin yeni evi - nerede olursanız olun, kazanmanın sınırlarını zorlayın."
+
+// Logo Tasarımı Önerisi:
+// BetOrbit için bir logo tasarımı, uzay temalı unsurlar içerebilir. Örneğin, bir futbol topunun etrafında dönen gezegen halkaları veya bir bahis kuponunun yıldızlar arasında uçtuğunu gösteren bir tasarım düşünülebilir. Renkler olarak koyu lacivert, gümüş ve turuncu tonları, uzayın derinliklerini ve enerjiyi yansıtırken, aynı zamanda dikkat çekici ve profesyonel bir görünüm sağlayabilir.
+
+// Site Yapısı Önerisi:
+// Ana Sayfa: Kullanıcıları galaksi temalı bir arka planla karşılayan ve günlük maçlar, bahis tavsiyeleri ve öne çıkan oranları gösteren dinamik bir görsel.
+// Maç Analizleri: Derinlemesine maç önizlemeleri ve analizleri sunan bir bölüm. Her bir analiz, "Galaksi Keşfi" temasıyla sunulabilir.
+// Bahis Rehberi: Bahis stratejileri, terimlerin açıklamaları ve başarılı bahisler için ipuçlarını içeren bir kaynak merkezi.
+// Kupon Tavsiyeleri: Günlük veya haftalık en iyi kupon önerilerinin yer aldığı, "Yıldız Geçidi" olarak adlandırılabilecek bir bölüm.
+// Blog: Bahis dünyasından haberler, oyuncu analizleri ve uzman görüşlerini içeren, "Uzay Günlüğü" adlı bir blog.
+
+// Ana Renkler:
+// Koyu Lacivert (Navy Blue): Derinlik ve uzayın sonsuzluğunu simgeler. Hex Kodu: #0B3D91
+// Gümüş (Silver): Teknoloji ve modernliği ifade eder, ayrıca uzay gemileri ve yıldızların parıltısını anımsatır. Hex Kodu: #C0C0C0
+// Yardımcı Renkler:
+// Turuncu (Orange): Enerji ve heyecanı temsil eder, koyu temada dikkat çekici bir kontrast oluşturur. Hex Kodu: #FF5722
+// Açık Gri (Light Grey): Metin ve diğer unsurlar için kullanılabilir, okunabilirliği artırır ve tasarımı yumuşatır. Hex Kodu: #E0E0E0
+// Koyu Gri (Dark Grey): Arka plan ve UI elementleri için derinlik ve zenginlik katar. Hex Kodu: #333333
+// Vurgu Renkleri:
+// Mavi-Gri (Blue Grey): Soğuk ve profesyonel bir his verir, uzay temasıyla uyum sağlar. Hex Kodu: #607D8B
+// Parlak Mavi (Bright Blue): İnteraktif elementler ve bağlantılar için canlılık katar. Hex Kodu: #1E88E5
