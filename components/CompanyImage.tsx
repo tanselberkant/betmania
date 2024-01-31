@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React from 'react';
 
 type Props = {
@@ -7,10 +8,12 @@ type Props = {
 const CompanyImage = ({ classes }: Props) => {
   return (
     <>
-      <img
+      <Image
+        width={500}
+        height={500}
         className={classes}
-        src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-        alt="betmania"
+        src="/layout/logo.png"
+        alt="betorbit-logo"
       />
     </>
   );

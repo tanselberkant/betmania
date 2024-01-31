@@ -1,13 +1,17 @@
 import '../../../styles/globals.css';
 
-import { VT323 } from 'next/font/google';
+import { Rubik } from 'next/font/google';
 import { notFound } from 'next/navigation';
 import { useLocale } from 'next-intl';
 import AdminDashboardLayout from '@/components/adminDashboard/AdminDashboardLayout';
 import { getServerSession } from 'next-auth';
 import auth from '@/lib/auth';
 
-const vt323 = VT323({ weight: '400', subsets: ['latin'] });
+const rubik = Rubik({
+  subsets: ['latin'],
+  display: 'swap',
+  weight: ['400', '500', '700', '900'],
+});
 
 const locales = ['en', 'de'];
 
@@ -26,7 +30,7 @@ export default async function AdminLayout({
   const session = await getServerSession(auth);
 
   return (
-    <html lang={locale} className={vt323.className}>
+    <html lang={locale} className={rubik.className}>
       <body>
         <AdminDashboardLayout children={children} session={session} />
       </body>

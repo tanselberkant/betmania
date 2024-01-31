@@ -1,14 +1,14 @@
-"use client";
-import Image from "next/image";
+'use client';
+import Image from 'next/image';
 // Import Swiper React components
-import { Autoplay } from "swiper/modules";
-import { Swiper, SwiperSlide, SwiperClass } from "swiper/react";
+import { Autoplay } from 'swiper/modules';
+import { Swiper, SwiperSlide, SwiperClass } from 'swiper/react';
 // Import Swiper styles
-import "swiper/css";
-import "swiper/css/autoplay";
-import Link from "next/link";
+import 'swiper/css';
+import 'swiper/css/autoplay';
+import Link from 'next/link';
 
-import { useLocale } from "next-intl";
+import { useLocale } from 'next-intl';
 
 type Props = {
   border: string;
@@ -69,7 +69,7 @@ const PostAddCarousel = ({ border }: Props) => {
             <Link
               target="_blank"
               href={content.link}
-              className="mt-20 w-[90%] text-sm lg:text-base lg:w-[60%] block mx-auto text-center text-white bg-green-800 p-2 rounded-xl font-semibold "
+              className="mt-16 w-[90%] text-sm lg:text-base lg:w-[60%] block mx-auto text-center text-white bg-orbitPurple  p-2 rounded-xl font-semibold "
             >
               Get Discont
             </Link>
@@ -85,20 +85,20 @@ export default PostAddCarousel;
 const carouselContent = [
   {
     id: 1,
-    title: "Bet Site 1",
-    link: "https://tanselberkant.dev",
-    image: "/adds/add1.jpeg",
+    title: 'Bet Site 1',
+    link: 'https://tanselberkant.dev',
+    image: '/adds/add1.jpeg',
   },
   {
     id: 2,
-    title: "Bet Site 2",
-    link: "https://tanselberkant.dev",
-    image: "/adds/add2.png",
+    title: 'Bet Site 2',
+    link: 'https://tanselberkant.dev',
+    image: '/adds/add2.png',
   },
   {
     id: 3,
-    title: "Bet Site 3",
-    link: "https://tanselberkant.dev",
-    image: "/adds/add3.jpeg",
+    title: 'Bet Site 3',
+    link: 'https://tanselberkant.dev',
+    image: '/adds/add3.jpeg',
   },
 ];

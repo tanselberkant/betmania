@@ -83,89 +83,136 @@ const Table = ({ results, session }: Props) => {
         ];
 
   return (
-    <>
-      <div className="flex justify-between items-center">
-        <h3 className="text-green-800 text-4xl my-5">
-          {locale === 'tr'
-            ? `${day} - Günün Bahisleri`
-            : `${dayEng} - Tips Of Day`}
-        </h3>
-        {session === 'admin' && (
-          <Link
-            href={`/admin/tables/${results._id}`}
-            className="mr-4 border-2 rounded-md px-4 p-1 border-green-700"
-          >
-            <h1 className="text-lg font-semibold leading-6 text-black">
-              Update
-            </h1>
-          </Link>
-        )}
+    <div className="bg-white">
+      <div className="mx-auto max-w-7xl">
+        <div className="bg-gray-900 py-10">
+          <div className="px-4 sm:px-6 lg:px-8">
+            <div className="sm:flex sm:items-center">
+              <div className="sm:flex-auto">
+                <h3 className="text-2xl font-semibold leading-6 text-white">
+                  {locale === 'tr'
+                    ? `${day} - Günün Bahisleri`
+                    : `${dayEng} - Tips Of Day`}
+                </h3>
+              </div>
+            </div>
+            <div className="mt-8 flow-root">
+              <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8  border-gray-300 border-l-[1px]">
+                  <table className="min-w-full divide-y divide-gray-700 ">
+                    <thead>
+                      <tr>
+                        <th
+                          scope="col"
+                          className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-white sm:pl-0 uppercase"
+                        >
+                          {locale === 'tr' ? 'Saat' : 'Time'}
+                        </th>
+                        <th
+                          scope="col"
+                          className="px-3 py-3.5 text-left text-sm font-semibold text-white uppercase"
+                        >
+                          {locale === 'tr' ? 'Ülke' : 'Country'}
+                        </th>
+                        <th
+                          scope="col"
+                          className="px-3 py-3.5 text-left text-sm font-semibold text-white uppercase"
+                        >
+                          {locale === 'tr' ? 'Turnuva' : 'Competition'}
+                        </th>
+                        <th
+                          scope="col"
+                          className="px-3 py-3.5 text-left text-sm font-semibold text-white uppercase"
+                        >
+                          {locale === 'tr' ? 'Takımlar' : 'Teams'}
+                        </th>
+                        <th
+                          scope="col"
+                          className="px-3 py-3.5 text-left text-sm font-semibold text-white uppercase"
+                        >
+                          {locale === 'tr' ? 'Tahmin' : 'Tip'}
+                        </th>
+                        <th
+                          scope="col"
+                          className="px-3 py-3.5 text-left text-sm font-semibold text-white uppercase"
+                        >
+                          {locale === 'tr' ? 'Oran' : 'Odds'}
+                        </th>
+                        <th
+                          scope="col"
+                          className="px-3 py-3.5 text-left text-sm font-semibold text-white uppercase"
+                        >
+                          {locale === 'tr' ? 'Sonuç' : 'Result'}
+                        </th>
+                        <th
+                          scope="col"
+                          className="relative py-3.5 pl-3 pr-4 sm:pr-0"
+                        >
+                          <span className="sr-only">Pick</span>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-800">
+                      {results.tips.map((item: TipData) => {
+                        if (!item.competition) {
+                          return null;
+                        }
+                        return (
+                          <tr key={item._id}>
+                            <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm  text-white sm:pl-0">
+                              {adjustTimeForLocale(item.time, locale)}
+                            </td>
+                            <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-300">
+                              {item.country}
+                            </td>
+                            <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-300">
+                              {item.competition}
+                            </td>
+                            <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-300">
+                              {item.teams}
+                            </td>
+                            <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-300">
+                              {item.tip}
+                            </td>
+                            <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-300">
+                              {item.odds}
+                            </td>
+                            <td
+                              className={classNames(
+                                item.win === 'win'
+                                  ? 'text-orbitPurple'
+                                  : 'text-orbitOrange',
+                                'whitespace-nowrap px-3 py-4 text-sm pl-7 '
+                              )}
+                            >
+                              {item.result}
+                            </td>
+                            <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
+                              <input
+                                type="checkbox"
+                                onChange={(e) =>
+                                  handleCheckboxChange(e, item._id)
+                                }
+                                checked={selectedTipIds.includes(item._id)}
+                              />
+                            </td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                  <p className="text-center my-2 font-semibold text-white ">
+                    {locale === 'tr'
+                      ? `Seçilen Toplam Oran: ${totalOdds.toFixed(2)}`
+                      : `Total Rate Selected: ${totalOdds.toFixed(2)}`}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div className="relative bg-indigo-400 rounded-t-md">
-        <table className="w-full text-sm text-left rtl:text-right">
-          <thead className="text-sm text-white uppercase bg-indigo-400">
-            <tr>
-              {theads.map((item, index) => (
-                <th key={index} scope="col" className="px-6 py-3">
-                  {item}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {results.tips.map((item: TipData) => {
-              if (!item.competition) {
-                return null;
-              }
-
-              return (
-                <tr
-                  key={item._id}
-                  className="bg-[#a2e0a9] border-b text-green-800"
-                >
-                  <td className="px-6 py-4">
-                    {adjustTimeForLocale(item.time, locale)}
-                  </td>
-                  <td className="px-6 py-4">
-                    <PiSoccerBallLight
-                      color="FF0000"
-                      className="animate-spin w-5 h-5"
-                    />
-                  </td>
-                  <td className="px-6 py-4">{item.country}</td>
-                  <td className="px-6 py-4">{item.competition}</td>
-                  <td scope="row" className="px-6 py-4">
-                    {item.teams}
-                  </td>
-                  <td className="px-6 py-4">{item.tip}</td>
-                  <td className="px-6 py-4">{item.odds}</td>
-                  <td
-                    className={classNames(
-                      item.win === 'win' ? 'text-green-600' : 'text-red-700',
-                      'px-11 py-4'
-                    )}
-                  >
-                    {item.result}
-                  </td>
-                  <td className="pl-7 py-4">
-                    <input
-                      type="checkbox"
-                      onChange={(e) => handleCheckboxChange(e, item._id)}
-                      checked={selectedTipIds.includes(item._id)}
-                    />
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-        <p className="text-center my-2">
-          {locale === 'tr'
-            ? `Seçilen Toplam Oran: ${totalOdds.toFixed(2)}`
-            : `Total Rate Selected: ${totalOdds.toFixed(2)}`}
-        </p>
-      </div>
-    </>
+    </div>
   );
 };
 
@@ -183,14 +230,3 @@ export default Table;
 // Bahis Rehberi: Bahis stratejileri, terimlerin açıklamaları ve başarılı bahisler için ipuçlarını içeren bir kaynak merkezi.
 // Kupon Tavsiyeleri: Günlük veya haftalık en iyi kupon önerilerinin yer aldığı, "Yıldız Geçidi" olarak adlandırılabilecek bir bölüm.
 // Blog: Bahis dünyasından haberler, oyuncu analizleri ve uzman görüşlerini içeren, "Uzay Günlüğü" adlı bir blog.
-
-// Ana Renkler:
-// Koyu Lacivert (Navy Blue): Derinlik ve uzayın sonsuzluğunu simgeler. Hex Kodu: #0B3D91
-// Gümüş (Silver): Teknoloji ve modernliği ifade eder, ayrıca uzay gemileri ve yıldızların parıltısını anımsatır. Hex Kodu: #C0C0C0
-// Yardımcı Renkler:
-// Turuncu (Orange): Enerji ve heyecanı temsil eder, koyu temada dikkat çekici bir kontrast oluşturur. Hex Kodu: #FF5722
-// Açık Gri (Light Grey): Metin ve diğer unsurlar için kullanılabilir, okunabilirliği artırır ve tasarımı yumuşatır. Hex Kodu: #E0E0E0
-// Koyu Gri (Dark Grey): Arka plan ve UI elementleri için derinlik ve zenginlik katar. Hex Kodu: #333333
-// Vurgu Renkleri:
-// Mavi-Gri (Blue Grey): Soğuk ve profesyonel bir his verir, uzay temasıyla uyum sağlar. Hex Kodu: #607D8B
-// Parlak Mavi (Bright Blue): İnteraktif elementler ve bağlantılar için canlılık katar. Hex Kodu: #1E88E5
