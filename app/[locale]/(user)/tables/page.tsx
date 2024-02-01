@@ -28,7 +28,7 @@ const UserTablePage = async ({
   const currentPage = Number(searchParams?.page) || 1;
 
   const totalPage = await getTableCountData();
-  console.log('totalPage->', totalPage);
+  // console.log('totalPage->', totalPage);
 
   return (
     <>
