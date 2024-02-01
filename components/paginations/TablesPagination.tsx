@@ -16,7 +16,7 @@ const TablesPagination = ({ totalPages }: { totalPages: number }) => {
   };
 
   return (
-    <div className="flex flex-1 justify-between sm:justify-end pr-6">
+    <div className="flex flex-1  justify-end pr-6">
       <PaginationArrow
         direction="left"
         href={createPageURL(currentPage - 1)}

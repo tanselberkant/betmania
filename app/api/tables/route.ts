@@ -17,11 +17,10 @@ export const GET = async (request: NextRequest) => {
       const pageStr = request.nextUrl.searchParams.get('page');
 
       let page = pageStr ? parseInt(pageStr) : 1;
-      let limit = parseInt(process.env.TABLE_LIMIT || '5');
+      let limit = parseInt(process.env.DEFAULT_LIMIT || '5');
 
       // Sayfa ve limit değerlerinin negatif veya sıfır olmadığından emin ol
       page = Math.max(page, 1);
-      limit = Math.max(limit, 1);
 
       const skip = (page - 1) * limit;
       let query = Tip.find({}).skip(skip).limit(limit);

@@ -1,7 +1,6 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import AddCarousel from './AddCarousel';
 import Table from './Table';
-import { useLocale } from 'next-intl';
 
 const getTableData = async (page: number) => {
   const res = await fetch(`http://localhost:3000/api/tables?page=${page}`, {

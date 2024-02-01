@@ -2,7 +2,7 @@ import React from 'react';
 import { EnvelopeIcon } from '@heroicons/react/20/solid';
 const SubscribeForm = () => {
   return (
-    <div className="relative mt-2 rounded-md shadow-sm w-[80%]">
+    <div className="relative mt-2 rounded-md shadow-sm w-[90%] md:w-[80%]">
       <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 ">
         <EnvelopeIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
       </div>
@@ -13,7 +13,7 @@ const SubscribeForm = () => {
         placeholder="you@example.com"
       />
       <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center  ">
-        <button className="h-full w-full text-white bg-orbitPurple px-4 rounded-r-md">
+        <button className="h-full w-full text-white bg-orbitPurple px-2 md:px-4 rounded-r-md">
           Submit
         </button>
       </div>

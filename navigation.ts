@@ -7,11 +7,11 @@ export const locales = ['en', 'tr'] as const;
 
 export const pathnames = {
   '/': '/',
-  '/bahisler': {
+  '/bets': {
     en: '/bets',
     tr: '/bahisler',
   },
-  '/bets': {
+  '/bahisler': {
     en: '/bets',
     tr: '/bahisler',
   },

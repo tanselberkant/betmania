@@ -18,7 +18,7 @@ const HomeSubscribeBanner = () => {
               className="h-full w-full object-cover object-center"
             />
           </div>
-          <div className="relative bg-gray-900 bg-opacity-75 px-6 py-32 sm:px-12 sm:py-40 lg:px-16 ">
+          <div className="relative bg-gray-900 bg-opacity-75 px-2 py-32 sm:px-12 sm:py-40 lg:px-16 ">
             <div className="relative mx-auto flex max-w-3xl flex-col items-center text-center">
               <p className="my-3  text-3xl font-bold text-white">
                 {locale === 'tr'

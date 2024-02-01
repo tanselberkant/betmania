@@ -96,15 +96,15 @@ const BetsAddForm = () => {
                 onChange={handleInputChange}
                 className="border-2 p-1"
               >
-                <option value="Ejder">Ejder</option>
-                <option value="Osman">Osman</option>
-                <option value="Tolga">Tolga</option>
-                <option value="Tolga">Muratcan</option>
+                <option value="Drake">Drake</option>
+                <option value="Mosman">Mosman</option>
+                <option value="Tolgar">Tolgar</option>
+                <option value="Mercan">Mercan</option>
               </select>
             </div>
 
             {/* BAHIS DESCRIPTION */}
-            <div className="sm:col-span-4 flex items-center">
+            {/* <div className="sm:col-span-4 flex items-center">
               <label className="pr-4 " htmlFor="advisorName">
                 Bahis Açıklaması:
               </label>
@@ -117,7 +117,7 @@ const BetsAddForm = () => {
                 onChange={handleInputChange}
                 placeholder="Bahis Açıklaması..."
               />
-            </div>
+            </div> */}
           </div>
         </div>
         <table className="min-w-full divide-y divide-gray-300">
@@ -202,6 +202,7 @@ const BetsAddForm = () => {
                     onChange={(e) => handleSelectChange(e, index)}
                     className="border-2 p-1"
                   >
+                    <option>Seçiniz</option>
                     {resultOptions.map((opt, index) => (
                       <option key={index} value={opt}>
                         {opt}{' '}
@@ -212,6 +213,7 @@ const BetsAddForm = () => {
                 {/* ODDS */}
                 <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                   <input
+                    className="border-[1px] rounded-md p-1"
                     type="number"
                     name="odd"
                     value={match.odd}
