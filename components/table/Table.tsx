@@ -1,11 +1,11 @@
 'use client';
 import React, { useState } from 'react';
 import { useLocale } from 'next-intl';
-import Link from 'next/link';
+
 import { convertDate } from '@/utils/convertDate';
 import { classNames } from '@/utils/conditionalClasses';
 import { adjustTimeForLocale } from '@/utils/adjustTimeForLocale';
-import { PiSoccerBallLight } from 'react-icons/pi';
+// import { PiSoccerBallLight } from 'react-icons/pi';
 
 type TipData = {
   _id: string;
@@ -29,11 +29,10 @@ type TipsData = {
 };
 
 type Props = {
-  session?: string | null;
   results: TipsData;
 };
 
-const Table = ({ results, session }: Props) => {
+const Table = ({ results }: Props) => {
   const locale = useLocale();
   const { day, dayEng } = convertDate(results.day);
 
@@ -98,7 +97,7 @@ const Table = ({ results, session }: Props) => {
             </div>
             <div className="mt-8 flow-root">
               <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8  border-gray-300 border-l-[1px]">
+                <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8 table-border ">
                   <table className="min-w-full divide-y divide-gray-700 ">
                     <thead>
                       <tr>
@@ -189,6 +188,7 @@ const Table = ({ results, session }: Props) => {
                             </td>
                             <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
                               <input
+                                className=" appearance-none w-4 h-4 bg-white border-[1.65px] rounded border-white checked:bg-orbitPurple cursor-pointer"
                                 type="checkbox"
                                 onChange={(e) =>
                                   handleCheckboxChange(e, item._id)
@@ -201,10 +201,20 @@ const Table = ({ results, session }: Props) => {
                       })}
                     </tbody>
                   </table>
-                  <p className="text-center my-2 font-semibold text-white ">
-                    {locale === 'tr'
-                      ? `Seçilen Toplam Oran: ${totalOdds.toFixed(2)}`
-                      : `Total Rate Selected: ${totalOdds.toFixed(2)}`}
+                  <p className="text-end my-4 font-semibold text-white ">
+                    {locale === 'tr' ? (
+                      <>
+                        <>Seçilen Toplam Oran: </>
+                        <span className="text-lg">{totalOdds.toFixed(2)} </span>
+                      </>
+                    ) : (
+                      <>
+                        <>Total Rate Selected: </>
+                        <span className="text-lg text-orbitPurple">
+                          {totalOdds.toFixed(2)}{' '}
+                        </span>
+                      </>
+                    )}
                   </p>
                 </div>
               </div>

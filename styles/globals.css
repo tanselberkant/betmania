@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --silver: #d1d5db;
+  --purple: #6366f1;
+}
+
 #homeBtn {
   padding-top: 40px;
   position: relative;
@@ -47,4 +52,28 @@ table th:first-child {
 
 table th:last-child {
   border-radius: 0 10px 10px 0;
+}
+
+.border-mini-glow {
+  box-shadow: var(--silver) 0px 0px 10px !important;
+}
+
+.glow-hover:hover {
+  box-shadow: var(--silver) 0px 0px 20px !important;
+  transition: 0.4s;
+}
+
+.glow-purple-hover-btn:hover {
+  box-shadow: var(--purple) 0px -5px 20px !important;
+  transition: 0.35s;
+}
+
+.table-border {
+  border-left: 1px solid var(--silver) !important;
+  box-shadow: -10px 0px 10px -10px var(--silver);
+}
+
+.text-orbitPurple-custom {
+  color: #6366f1 !important;
+  text-shadow: 1px 2px 1.5px rgba(255, 255, 255, 0.8) !important;
 }

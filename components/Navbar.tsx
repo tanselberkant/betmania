@@ -30,7 +30,12 @@ export default function Navbar({ session }: Props) {
             <div className="flex h-16 justify-between">
               <div className="flex">
                 <div className="flex flex-shrink-0 items-center">
-                  <CompanyImage classes={'h-8 w-auto'} />
+                  {/* <CompanyImage classes={'h-8 w-auto'} /> */}
+                  <Link href={'/'}>
+                    <span className="text-3xl font-semibold  text-orbitPurple-custom">
+                      BetOrbit
+                    </span>
+                  </Link>
                 </div>
               </div>
               <div className="hidden sm:ml-6 sm:flex sm:items-center sm:space-x-8">

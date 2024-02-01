@@ -19,7 +19,7 @@ const PostAddCarousel = ({ border }: Props) => {
   return (
     <div
       style={{ border: `2px solid #${border}` }}
-      className="rounded-xl p-4 h-[377px]  "
+      className="rounded-xl p-4 h-[377px] glow-hover border-mini-glow "
     >
       <Swiper
         modules={[Autoplay]}
@@ -54,7 +54,7 @@ const PostAddCarousel = ({ border }: Props) => {
       >
         {carouselContent.map((content) => (
           <SwiperSlide key={content.id} className=" ">
-            <p className="text-center text-[#1F2937] text-base lg:text-lg font-medium mb-4 h-[40px] ">
+            <p className="text-center text-white text-base lg:text-lg font-medium mb-4 h-[40px] ">
               {content.title}
             </p>
             <div className="w-[80%] h-[120px] lg:h-[160px] mx-auto  rounded-xl mb-6">
@@ -69,7 +69,7 @@ const PostAddCarousel = ({ border }: Props) => {
             <Link
               target="_blank"
               href={content.link}
-              className="mt-16 w-[90%] text-sm lg:text-base lg:w-[60%] block mx-auto text-center text-white bg-orbitPurple  p-2 rounded-xl font-semibold "
+              className="mt-16 w-[90%] text-sm lg:text-base lg:w-[60%] block mx-auto text-center glow-purple-hover-btn text-white bg-orbitPurple  p-2 rounded-xl font-semibold "
             >
               Get Discont
             </Link>
@@ -85,20 +85,20 @@ export default PostAddCarousel;
 const carouselContent = [
   {
     id: 1,
-    title: 'Bet Site 1',
-    link: 'https://tanselberkant.dev',
+    title: 'Slotella',
+    link: 'https://www.google.com',
     image: '/adds/add1.jpeg',
   },
   {
     id: 2,
-    title: 'Bet Site 2',
-    link: 'https://tanselberkant.dev',
+    title: 'DellaBet',
+    link: 'https://www.google.com',
     image: '/adds/add2.png',
   },
   {
     id: 3,
-    title: 'Bet Site 3',
-    link: 'https://tanselberkant.dev',
+    title: 'PortoBet',
+    link: 'https://www.google.com',
     image: '/adds/add3.jpeg',
   },
 ];

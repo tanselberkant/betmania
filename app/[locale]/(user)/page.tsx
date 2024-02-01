@@ -1,3 +1,4 @@
+import ArrowAfterBanner from '@/components/home/ArrowAfterBanner';
 import HomeBanner from '@/components/home/HomeBanner';
 import HomeInfo from '@/components/home/HomeInfo';
 import TableContainer from '@/components/table/TableContainer';
@@ -15,11 +16,11 @@ export async function generateMetadata({ params: { locale } }: any) {
 
 export default function Home() {
   return (
-    <>
+    <div className="relative">
       <HomeBanner />
       <HomeInfo />
       <TableContainer />
       <div className="h-screen"></div>
-    </>
+    </div>
   );
 }
