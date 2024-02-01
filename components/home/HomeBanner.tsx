@@ -3,6 +3,7 @@ import Image from 'next/image';
 
 import { EnvelopeIcon, ArrowDownIcon } from '@heroicons/react/20/solid';
 import { useLocale } from 'next-intl';
+import SubscribeForm from '../subscribeForm/SubscribeForm';
 
 const HomeBanner = () => {
   const locale = useLocale();
@@ -64,7 +65,7 @@ const HomeBanner = () => {
                 <span className="text-orbitPurple-custom">BetOrbit</span>
               </h1>
             )}
-            <p className="mt-6 text-lg leading-8 text-gray-300">
+            <h2 className="mt-12 text-lg leading-8 text-gray-300">
               {locale === 'tr' ? (
                 <>
                   Bahis Evreniniz! Yıldızlar arası en keskin bahis tavsiyeleri,
@@ -84,32 +85,14 @@ const HomeBanner = () => {
                   valuable betting opportunities.
                 </>
               )}
-            </p>
-            <p className="mt-6 text-lg leading-8 text-gray-300">
+            </h2>
+            <p className="mt-8 text-lg leading-8 text-gray-300">
               {locale === 'tr'
                 ? 'Kaçırmamak için abone olun!'
                 : "Subscribe so you don't miss it!"}
             </p>
             <div className="mt-10 flex items-center gap-x-6 w-full ">
-              <div className="relative mt-2 rounded-md shadow-sm w-[80%]">
-                <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 ">
-                  <EnvelopeIcon
-                    className="h-5 w-5 text-gray-400"
-                    aria-hidden="true"
-                  />
-                </div>
-                <input
-                  type="email"
-                  name="email"
-                  className=" w-full rounded-md border-0 py-[7px] pl-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 outline-none sm:text-sm sm:leading-6"
-                  placeholder="you@example.com"
-                />
-                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center  ">
-                  <button className="h-full w-full text-white bg-orbitPurple px-4 rounded-r-md">
-                    Submit
-                  </button>
-                </div>
-              </div>
+              <SubscribeForm />
             </div>
           </div>
           <div className="mx-auto mt-16 flex max-w-2xl sm:mt-24 lg:ml-10 lg:mr-0 lg:mt-0 lg:max-w-none lg:flex-none xl:ml-32">

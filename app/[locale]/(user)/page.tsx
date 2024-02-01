@@ -1,6 +1,6 @@
-import ArrowAfterBanner from '@/components/home/ArrowAfterBanner';
 import HomeBanner from '@/components/home/HomeBanner';
 import HomeInfo from '@/components/home/HomeInfo';
+import HomeSubscribeBanner from '@/components/home/HomeSubscribeBanner';
 import TableContainer from '@/components/table/TableContainer';
 import { getTranslations } from 'next-intl/server';
 
@@ -20,7 +20,7 @@ export default function Home() {
       <HomeBanner />
       <HomeInfo />
       <TableContainer />
-      <div className="h-screen"></div>
+      <HomeSubscribeBanner />
     </div>
   );
 }

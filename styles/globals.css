@@ -58,6 +58,10 @@ table th:last-child {
   box-shadow: var(--silver) 0px 0px 10px !important;
 }
 
+.border-mini-glow-purple {
+  box-shadow: var(--purple) 0px 0px 10px !important;
+}
+
 .glow-hover:hover {
   box-shadow: var(--silver) 0px 0px 20px !important;
   transition: 0.4s;
@@ -76,4 +80,9 @@ table th:last-child {
 .text-orbitPurple-custom {
   color: #6366f1 !important;
   text-shadow: 1px 2px 1.5px rgba(255, 255, 255, 0.8) !important;
+}
+
+.text-glow-silver {
+  color: var(var(--silver)) !important;
+  text-shadow: 1px 1px 1.5px rgba(255, 255, 255, 0.8) !important;
 }

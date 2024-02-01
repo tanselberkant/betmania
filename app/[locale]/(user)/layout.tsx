@@ -7,6 +7,7 @@ import { notFound } from 'next/navigation';
 import { useLocale } from 'next-intl';
 import { getServerSession } from 'next-auth';
 import auth from '@/lib/auth';
+import Footer from '@/components/Footer';
 
 // const vt323 = VT323({ weight: '400', subsets: ['latin'] });
 
@@ -37,6 +38,7 @@ export default async function RootLayout({
       <body className="bg-betOrbitMainDark">
         <Navbar session={session} />
         {children}
+        <Footer />
       </body>
     </html>
   );

@@ -15,6 +15,14 @@ export const pathnames = {
     en: '/bets',
     tr: '/bahisler',
   },
+  '/tables': {
+    en: '/tables',
+    tr: '/tablolar',
+  },
+  '/tablolar': {
+    en: '/tables',
+    tr: '/tablolar',
+  },
   // ADMIN PAGES
   '/admin/dashboard': {
     en: '/admin/dashboard',
