@@ -1,6 +1,6 @@
 import { convertDate } from '@/utils/convertDate';
 import { useLocale } from 'next-intl';
-import Link from 'next/link';
+import Image from 'next/image';
 import React from 'react';
 
 type Props = {
@@ -20,32 +20,48 @@ type Props = {
 
 const BetUserTable = ({ coupon }: Props) => {
   const locale = useLocale();
+
+  // Function to calculate total odds
+  const calculateTotalOdds = () => {
+    return coupon.matches
+      .reduce((total, match) => total * match.odd, 1)
+      .toFixed(2);
+  };
+
   return (
     <div className="mt-8 flow-root">
       <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
-          <div className=" flex my-7 ">
-            <div>
-              {locale === 'tr' ? (
-                <h1 className="text-lg font-semibold leading-6 text-orbitPurple">
-                  {`${coupon.advisorName}'in Kuponu`}
-                </h1>
-              ) : (
-                <h1 className="text-lg font-semibold leading-6 text-orbitPurple">
-                  {`${coupon.advisorName}'s Betting Predictions`}
-                </h1>
-              )}
-              <p className="text-gray-300 my-4">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Praesentium nulla illo molestias sit consectetur. Consectetur
-                suscipit quis quasi veniam nihil? Fuga officiis natus fugiat,
-                nesciunt iusto libero ea facere blanditiis.
-              </p>
+          <div className="flex justify-between my-5 pr-10">
+            <div className="flex gap-6">
+              <Image
+                className="w-[100px]"
+                src={`/bets/${coupon.advisorName}.png`}
+                height={500}
+                width={500}
+                alt={coupon.advisorName + 'profil picture'}
+              />
+              <div>
+                {locale === 'tr' ? (
+                  <h2 className="text-lg font-semibold leading-6 text-orbitPurple">
+                    {`${coupon.advisorName}'in Kuponu`}
+                  </h2>
+                ) : (
+                  <h2 className="text-lg font-semibold leading-6 text-orbitPurple">
+                    {`${coupon.advisorName}'s Betting Predictions`}
+                  </h2>
+                )}
+                <p className="text-gray-300 mt-2">{coupon.description}</p>
+              </div>
             </div>
-
-            <div className="flex gap-4"></div>
+            {/* <div>
+              <button className=" border-gray-300 border-[1.5px] rounded-md text-white px-4 py-2 border-mini-glow font-semibold glow-hover">
+                Share
+              </button>
+            </div> */}
           </div>
-          <table className="min-w-full divide-y divide-gray-700  border-l-2 border-orbitPurple">
+
+          <table className="min-w-full divide-y divide-orbitPurple  border-l-2 border-orbitPurple">
             <thead>
               <tr>
                 {/* <th className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-white sm:pl-0">
@@ -98,6 +114,23 @@ const BetUserTable = ({ coupon }: Props) => {
               })}
             </tbody>
           </table>
+          <p className="text-end pr-8 mb-20 mt-6 text-gray-300 font-semibold">
+            {locale === 'tr' ? (
+              <>
+                <>Toplam Oran: </>
+                <span className="text-lg text-orbitPurple">
+                  {calculateTotalOdds()}{' '}
+                </span>
+              </>
+            ) : (
+              <>
+                <>Total Odds: </>
+                <span className="text-lg text-orbitPurple">
+                  {calculateTotalOdds()}{' '}
+                </span>
+              </>
+            )}
+          </p>
         </div>
       </div>
     </div>

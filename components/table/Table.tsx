@@ -205,7 +205,9 @@ const Table = ({ results }: Props) => {
                     {locale === 'tr' ? (
                       <>
                         <>Seçilen Toplam Oran: </>
-                        <span className="text-lg">{totalOdds.toFixed(2)} </span>
+                        <span className="text-lg text-orbitPurple">
+                          {totalOdds.toFixed(2)}{' '}
+                        </span>
                       </>
                     ) : (
                       <>

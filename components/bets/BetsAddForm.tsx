@@ -104,7 +104,7 @@ const BetsAddForm = () => {
             </div>
 
             {/* BAHIS DESCRIPTION */}
-            {/* <div className="sm:col-span-4 flex items-center">
+            <div className="sm:col-span-4 flex items-center">
               <label className="pr-4 " htmlFor="advisorName">
                 Bahis Açıklaması:
               </label>
@@ -117,7 +117,7 @@ const BetsAddForm = () => {
                 onChange={handleInputChange}
                 placeholder="Bahis Açıklaması..."
               />
-            </div> */}
+            </div>
           </div>
         </div>
         <table className="min-w-full divide-y divide-gray-300">

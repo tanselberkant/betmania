@@ -17,7 +17,7 @@ const getBetsData = async (page: number) => {
 
 const BetsPageWrapper = async ({ currentPage }: { currentPage: number }) => {
   const coupons = await getBetsData(currentPage);
-  console.log(coupons);
+  //   console.log(coupons);
 
   return (
     <div className="grid grid-cols-12 gap-10 relative ">

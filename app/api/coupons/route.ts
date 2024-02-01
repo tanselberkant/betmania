@@ -10,8 +10,8 @@ export const GET = async (request: NextRequest) => {
     const advisorName = request.nextUrl.searchParams.get('advisorName');
 
     let page = pageStr ? parseInt(pageStr) : 1;
-    // let limit = parseInt(process.env.DEFAULT_LIMIT || '5');
-    let limit = 1;
+    let limit = parseInt(process.env.DEFAULT_LIMIT || '5');
+    // let limit = 1;
 
     // Sayfa ve limit değerlerinin negatif veya sıfır olmadığından emin ol
     page = Math.max(page, 1);

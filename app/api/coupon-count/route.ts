@@ -6,8 +6,8 @@ export const GET = async (request: NextRequest) => {
   try {
     await connectToDb();
 
-    // let limit = parseInt(process.env.DEFAULT_LIMIT || '5');
-    let limit = 1;
+    let limit = parseInt(process.env.DEFAULT_LIMIT || '5');
+    // let limit = 1;
 
     // Veritabanındaki toplam kayıt sayısını bul
     const totalItems = await Coupon.countDocuments();
