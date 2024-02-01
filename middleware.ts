@@ -9,6 +9,8 @@ import { NextRequest, NextResponse } from 'next/server';
 const publicPages = [
   '/',
   '/login',
+  '/tables',
+  '/tablolar',
   // (/admin requires auth)
 ];
 

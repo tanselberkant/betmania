@@ -45,17 +45,17 @@ export default function Navbar({ session }: Props) {
                 >
                   {locale === 'en' ? 'Home' : 'Anasayfa'}
                 </Link>
-                <a
-                  href="#"
-                  className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-betOrbitMainSilver hover:text-gray-400"
-                >
-                  {locale === 'en' ? 'Predictions' : 'Tahminler'}
-                </a>
                 <Link
-                  href={locale === 'en' ? '/bets' : '/bahisler'}
+                  href="/tables"
                   className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-betOrbitMainSilver hover:text-gray-400"
                 >
-                  {locale === 'en' ? 'Bets' : 'Bahisler'}
+                  {locale === 'en' ? 'Tables' : 'Tablolar'}
+                </Link>
+                <Link
+                  href={'/bets'}
+                  className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-betOrbitMainSilver hover:text-gray-400"
+                >
+                  {locale === 'en' ? 'Bahisler' : 'Bets'}
                 </Link>
                 <a
                   href="#"
@@ -63,12 +63,7 @@ export default function Navbar({ session }: Props) {
                 >
                   {locale === 'en' ? 'Posts' : 'Blog'}
                 </a>
-                <a
-                  href="#"
-                  className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-betOrbitMainSilver hover:text-gray-400"
-                >
-                  {locale === 'en' ? 'Contact' : 'İletişim'}
-                </a>{' '}
+
                 {session && (
                   <>
                     <Link

@@ -6,19 +6,32 @@ import { NextResponse, NextRequest } from 'next/server';
 export const GET = async (request: NextRequest) => {
   try {
     connectToDb();
+
     const id = request.nextUrl.searchParams.get('id');
-    let query = {};
-
     if (id) {
-      query = { _id: id };
-    }
+      const table = await Tip.findById(id);
+      return NextResponse.json(table);
+    } else {
+      // ID yoksa veya null ise, genel sorgu yapılacak
 
-    // En yeni öğeleri en önce getir
-    const tables = await Tip.find(query).sort({ createdAt: -1 });
-    return NextResponse.json(tables);
+      const pageStr = request.nextUrl.searchParams.get('page');
+
+      let page = pageStr ? parseInt(pageStr) : 1;
+      let limit = parseInt(process.env.TABLE_LIMIT || '5');
+
+      // Sayfa ve limit değerlerinin negatif veya sıfır olmadığından emin ol
+      page = Math.max(page, 1);
+      limit = Math.max(limit, 1);
+
+      const skip = (page - 1) * limit;
+      let query = Tip.find({}).skip(skip).limit(limit);
+
+      const tables = await query.sort({ createdAt: -1 });
+      return NextResponse.json(tables);
+    }
   } catch (err) {
     console.log(err);
-    throw new Error('Failed to fetch tables!');
+    throw new Error('Failed to fetch data!');
   }
 };
 
@@ -36,7 +49,6 @@ export const PUT = async (request: NextRequest) => {
     );
 
     revalidatePath('/', 'layout');
-    revalidatePath('/admin');
     return NextResponse.json({
       success: true,
       message: 'Table updated successfully',

@@ -23,7 +23,7 @@ const TableContainer = async () => {
     <div id="#results" className="max-w-7xl mx-auto mt-20 mb-4">
       <div className="grid grid-cols-12 gap-10 relative ">
         <div className="col-span-9">
-          {tables.map((table: any, index: number) => (
+          {tables.slice(0, 4).map((table: any, index: number) => (
             <Table key={index} results={table} />
           ))}
         </div>

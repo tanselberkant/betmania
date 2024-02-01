@@ -20,13 +20,16 @@ const AdminSingleTablePage = async ({
 }: {
   params: { slug: string };
 }) => {
-  const table = await getTableData(params.slug);
-  // console.log(table[0]);
+  const tableData = await getTableData(params.slug);
+  // console.log('table-->', tableData);
   const session = await getServerSession(auth);
+
+  // tableData'nın dizi olup olmadığını kontrol et
+  const table = Array.isArray(tableData) ? tableData[0] : tableData;
 
   return (
     <div>
-      <UpdateTable session={session?.user.name} results={table[0]} />
+      <UpdateTable session={session?.user.name} results={table} />
     </div>
   );
 };
