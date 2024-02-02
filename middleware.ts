@@ -11,6 +11,10 @@ const publicPages = [
   '/login',
   '/tables',
   '/tablolar',
+  '/bets',
+  '/bahisler',
+  '/blogs',
+  '/posts',
   // (/admin requires auth)
 ];
 

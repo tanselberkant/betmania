@@ -52,6 +52,7 @@ type PostData = {
   metaDescription: string;
   metaKeyword: string;
   metaTitle: string;
+  language: string;
   content: string;
 };
 

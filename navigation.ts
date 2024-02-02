@@ -23,6 +23,14 @@ export const pathnames = {
     en: '/tables',
     tr: '/tablolar',
   },
+  '/posts': {
+    en: '/posts',
+    tr: '/blogs',
+  },
+  '/blogs': {
+    en: '/posts',
+    tr: '/blogs',
+  },
   // ADMIN PAGES
   '/admin/dashboard': {
     en: '/admin/dashboard',

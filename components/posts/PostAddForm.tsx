@@ -45,6 +45,7 @@ const PostAddForm = () => {
         className="flex flex-col space-y-3 w-full border-2 border-black py-2"
       >
         <h1 className="text-2xl text-center my-2">Add New Post</h1>
+
         {/* META DESC */}
         <div className="flex gap-4 ">
           <label
@@ -90,6 +91,23 @@ const PostAddForm = () => {
             className="w-full rounded-md px-2 py-2 border-2"
           />
         </div>
+        {/* Language */}
+        <div className="flex gap-4 ">
+          <label
+            htmlFor="language"
+            className="border-2 rounded-md w-[100px] flex justify-center items-center bg-black text-white"
+          >
+            Language
+          </label>
+          <select
+            name="language"
+            className="w-full rounded-md px-2 py-2 border-2"
+          >
+            <option value="tr">Seçiniz</option>
+            <option value="tr">Türkce</option>
+            <option value="en">Ingilizce</option>
+          </select>
+        </div>
         <hr className="border-2 border-black" />
         {/* POST TITLE */}
         <div className="flex gap-4">
@@ -117,7 +135,7 @@ const PostAddForm = () => {
           <input
             type="text"
             name="slug"
-            placeholder="Post Slug"
+            placeholder="post-title"
             className="w-full rounded-md px-2 py-2 border-2"
           />
         </div>
@@ -147,7 +165,7 @@ const PostAddForm = () => {
           <input
             type="text"
             name="imgUrl"
-            placeholder="Post Image Url"
+            placeholder="https://images.pexels.com/photo.jpeg"
             className="w-full rounded-md px-2 py-2 border-2"
           />
         </div>
@@ -172,7 +190,7 @@ const PostAddForm = () => {
             htmlFor="content"
             className="border-2 text-center rounded-md bg-black py-2 text-white  flex justify-center items-center"
           >
-            CONTENT BELOW
+            CONTENT
           </label>
           <ReactQuill
             className="h-[400px] w-[80%] "

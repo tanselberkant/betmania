@@ -78,6 +78,9 @@ const postSchema = new mongoose.Schema(
     content: {
       type: String,
     },
+    language: {
+      type: String,
+    },
   },
   { timestamps: true }
 );

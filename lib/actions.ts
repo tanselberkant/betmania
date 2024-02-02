@@ -92,6 +92,7 @@ export const addPost = async (prevState: any, formData: any) => {
     desc,
     imgUrl,
     authorName,
+    language,
     content,
   } = Object.fromEntries(formData);
 
@@ -106,6 +107,7 @@ export const addPost = async (prevState: any, formData: any) => {
       desc,
       imgUrl,
       authorName,
+      language,
       content,
     });
 
