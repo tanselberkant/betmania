@@ -110,7 +110,7 @@ const HomeBanner = () => {
         <div className="absolute bottom-16 md:bottom-32 lg:bottom-40 flex   justify-center w-full py-10">
           <div className="flex flex-col justify-center items-center">
             <ArrowDownIcon
-              className=" animate-bounce border-gray-300 glow-border h-7 w-7 text-white border-mini-glow"
+              className=" animate-bounce border-gray-300 glow-border h-10 w-7 text-white border-mini-glow"
               aria-hidden="true"
             />
           </div>

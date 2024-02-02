@@ -113,3 +113,8 @@ table th:last-child {
   font-size: 18px !important;
   font-weight: 700 !important;
 }
+
+.innerCardImage {
+  opacity: 0.25;
+  transition: 0.2s;
+}

@@ -7,11 +7,30 @@ const HomeInfo = () => {
   return (
     <div className="relative bg-gray-900">
       <div className="relative h-80 overflow-hidden bg-indigo-600 md:absolute md:left-0 md:h-full md:w-1/3 lg:w-1/2">
-        <img
+        <div
+          className="teamCardWrapper"
+          style={{
+            background: `linear-gradient(0deg, #6366f1 24.75%, rgba(31, 37, 75, 100%) 100%)`,
+          }}
+        >
+          <Image
+            style={{
+              border: `1px solid #6366f1`,
+            }}
+            width={600}
+            height={600}
+            src="/home/info.png"
+            className={`h-full w-full -z-10 object-fit rounded-[2px]  innerCardImage `}
+            alt="Home Info"
+          />
+        </div>
+        {/* <Image
+          width={500}
+          height={500}
           className="h-full w-full object-cover"
-          src="https://images.unsplash.com/photo-1525130413817-d45c1d127c42?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1920&q=60&blend=6366F1&sat=-100&blend-mode=multiply"
-          alt=""
-        />
+          src="/home/info.png"
+          alt="Home Info"
+        /> */}
         <svg
           viewBox="0 0 926 676"
           aria-hidden="true"
