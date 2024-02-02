@@ -5,6 +5,7 @@
 :root {
   --silver: #d1d5db;
   --purple: #6366f1;
+  --mainDark: #121826;
 }
 
 #homeBtn {
@@ -85,4 +86,30 @@ table th:last-child {
 .text-glow-silver {
   color: var(var(--silver)) !important;
   text-shadow: 1px 1px 1.5px rgba(255, 255, 255, 0.8) !important;
+}
+
+.custom-post-body span {
+  color: var(--silver) !important;
+  background-color: var(--mainDark) !important;
+  /* Diğer stiller */
+}
+
+.custom-post-body h2 {
+  font-size: 24px !important;
+  font-weight: 700 !important;
+}
+
+.custom-post-body h1 {
+  font-size: 32px !important;
+  font-weight: 700 !important;
+}
+
+.custom-post-body h3 {
+  font-size: 20px !important;
+  font-weight: 700 !important;
+}
+
+.custom-post-body h4 {
+  font-size: 18px !important;
+  font-weight: 700 !important;
 }

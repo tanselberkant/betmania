@@ -22,13 +22,13 @@ const UserPostsWrapper = async ({
 }) => {
   const locale = useLocale();
   const posts = await getPostsData(currentPage);
-  //   console.log(coupons);
+  // console.log(posts);
 
   return (
     <div className="py-12">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:max-w-4xl">
-          <p className="mt-2 text-lg leading-8 text-gray-300">
+          <p className="mt-2 text-lg leading-8 text-gray-300 text-center text-glow-silver">
             Learn how to grow your business with our expert advice.
           </p>
           <div className="mt-16 space-y-20 lg:mt-20 lg:space-y-20">
@@ -43,20 +43,14 @@ const UserPostsWrapper = async ({
                     height={500}
                     src={post.imgUrl}
                     alt={post.title + ' image'}
-                    className="absolute inset-0 h-full w-full rounded-2xl bg-gray-50 object-cover"
+                    className="absolute inset-0 h-full w-full rounded-2xl bg-gray-300 border-mini-glow object-cover"
                   />
                   <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
                 </div>
                 <div>
                   <div className="group relative max-w-xl">
                     <h3 className="mt-3 text-lg font-semibold leading-6 text-gray-300 group-hover:text-gray-500">
-                      <Link
-                        href={
-                          locale === 'tr'
-                            ? `/blogs/${post.slug}`
-                            : `/posts/${post.slug}`
-                        }
-                      >
+                      <Link href={`/posts/${post.slug}`}>
                         <span className="absolute inset-0" />
                         {post.title}
                       </Link>
@@ -65,7 +59,7 @@ const UserPostsWrapper = async ({
                       {post.desc}
                     </p>
                   </div>
-                  <div className="mt-6 flex border-t border-gray-300/10 pt-6">
+                  <div className="mt-6 flex border-t border-gray-300/10 pt-6 ">
                     <div className="relative flex items-center gap-x-4">
                       <Image
                         width={500}

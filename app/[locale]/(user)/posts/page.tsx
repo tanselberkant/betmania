@@ -1,6 +1,7 @@
 import HomeSubscribeBanner from '@/components/home/HomeSubscribeBanner';
 import TablesPagination from '@/components/paginations/TablesPagination';
 import UserPostsWrapper from '@/components/posts/UserPostsWrapper';
+import PostWrapperSuspense from '@/components/suspenses/PostWrapperSuspense';
 
 import { useLocale } from 'next-intl';
 import React, { Suspense } from 'react';
@@ -29,7 +30,7 @@ const UserPostsPage = async ({
   const currentPage = Number(searchParams?.page) || 1;
 
   const totalPage = await getPostCount();
-  console.log(totalPage);
+  // console.log(totalPage);
 
   return (
     <>
@@ -37,7 +38,7 @@ const UserPostsPage = async ({
         {locale === 'tr' ? 'Blog' : 'Posts'}
       </h1>
 
-      <Suspense key={currentPage} fallback={<>Wait</>}>
+      <Suspense key={currentPage} fallback={<PostWrapperSuspense />}>
         <UserPostsWrapper currentPage={currentPage} />
       </Suspense>
       <div className="grid grid-cols-12 gap-10">

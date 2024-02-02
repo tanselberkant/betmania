@@ -14,7 +14,10 @@ const publicPages = [
   '/bets',
   '/bahisler',
   '/blogs',
+  '/blogs/:slug',
   '/posts',
+  '/posts/:slug',
+
   // (/admin requires auth)
 ];
 
@@ -42,17 +45,32 @@ const authMiddleware = withAuth(
 );
 
 export default async function middleware(req: NextRequest) {
+  // console.log('req.nextUrl.pathname', req.nextUrl.pathname);
+
+  // Mevcut isteği uyarlama
   const adaptedReq = {
     headers: Object.fromEntries(req.headers.entries()),
     method: req.method,
     url: req.url,
   };
 
+  // Oturum kontrolü
   const session = await getSession({ req: adaptedReq });
 
   // Kullanıcı oturum açmışsa ve /login sayfasına gitmeye çalışıyorsa, ana sayfaya yönlendir
   if (session && req.nextUrl.pathname === '/login') {
     return NextResponse.redirect(new URL('/', req.url));
+  }
+
+  // Dinamik yol için özel kontrol
+  if (
+    req.nextUrl.pathname.startsWith('/blogs/') ||
+    req.nextUrl.pathname.startsWith('/posts/') ||
+    req.nextUrl.pathname.startsWith('/en/posts') ||
+    req.nextUrl.pathname.startsWith('/tr/blogs/') ||
+    req.nextUrl.pathname.startsWith('/tr/posts/')
+  ) {
+    return intlMiddleware(req);
   }
 
   const publicPathnameRegex = RegExp(

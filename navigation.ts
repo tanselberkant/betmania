@@ -25,11 +25,7 @@ export const pathnames = {
   },
   '/posts': {
     en: '/posts',
-    tr: '/blogs',
-  },
-  '/blogs': {
-    en: '/posts',
-    tr: '/blogs',
+    tr: '/posts',
   },
   // ADMIN PAGES
   '/admin/dashboard': {

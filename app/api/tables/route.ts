@@ -5,7 +5,7 @@ import { NextResponse, NextRequest } from 'next/server';
 
 export const GET = async (request: NextRequest) => {
   try {
-    connectToDb();
+    await connectToDb();
 
     const id = request.nextUrl.searchParams.get('id');
     if (id) {

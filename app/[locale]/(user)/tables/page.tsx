@@ -1,5 +1,6 @@
 import HomeSubscribeBanner from '@/components/home/HomeSubscribeBanner';
 import TablesPagination from '@/components/paginations/TablesPagination';
+import TableWrapperSuspense from '@/components/suspenses/TableWrapperSuspense';
 import TablesPageWrapper from '@/components/table/TablesPageWrapper';
 import { useLocale } from 'next-intl';
 import React, { Suspense } from 'react';
@@ -35,7 +36,7 @@ const UserTablePage = async ({
         {locale === 'tr' ? 'Tablolar' : 'Tables'}
       </h1>
       <div className="max-w-7xl mx-auto mt-20 mb-4">
-        <Suspense key={currentPage} fallback={<>Wait</>}>
+        <Suspense key={currentPage} fallback={<TableWrapperSuspense />}>
           <TablesPageWrapper currentPage={currentPage} />
         </Suspense>
         <div className="grid grid-cols-12 gap-10">
