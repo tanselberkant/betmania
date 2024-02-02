@@ -15,20 +15,22 @@ const TablesPagination = ({ totalPages }: { totalPages: number }) => {
     return `${pathname}?${params.toString()}`;
   };
 
-  return (
-    <div className="flex flex-1  justify-end pr-6">
-      <PaginationArrow
-        direction="left"
-        href={createPageURL(currentPage - 1)}
-        isDisabled={currentPage <= 1}
-      />
-      <PaginationArrow
-        direction="right"
-        href={createPageURL(currentPage + 1)}
-        isDisabled={currentPage >= totalPages}
-      />
-    </div>
-  );
+  if (totalPages > 1) {
+    return (
+      <div className="flex flex-1  justify-end pr-6">
+        <PaginationArrow
+          direction="left"
+          href={createPageURL(currentPage - 1)}
+          isDisabled={currentPage <= 1}
+        />
+        <PaginationArrow
+          direction="right"
+          href={createPageURL(currentPage + 1)}
+          isDisabled={currentPage >= totalPages}
+        />
+      </div>
+    );
+  }
 };
 
 export default TablesPagination;

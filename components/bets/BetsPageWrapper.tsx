@@ -21,7 +21,7 @@ const BetsPageWrapper = async ({ currentPage }: { currentPage: number }) => {
 
   return (
     <div className="grid grid-cols-12 gap-10 relative ">
-      <div className="col-span-9">
+      <div className="col-span-9 pl-6 md:px-4">
         {coupons.map((coupon: BetsData, index: number) => (
           <BetUserTable coupon={coupon} key={index} />
         ))}

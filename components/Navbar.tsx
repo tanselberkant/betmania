@@ -100,35 +100,62 @@ export default function Navbar({ session }: Props) {
           </div>
 
           <Disclosure.Panel className="sm:hidden">
-            <div className="space-y-1 pb-3 pt-2">
-              {/* Current: "bg-indigo-50 border-indigo-500 text-indigo-700", Default: "border-transparent text-betOrbitMainSilver hover:bg-gray-50 hover:text-gray-400" */}
+            <div className="space-y-2 pb-3 pt-2">
+              <Link href={'/'} passHref>
+                <Disclosure.Button
+                  as="a"
+                  className="block border-l-4 border-indigo-500  py-2 pl-3 pr-4 text-base text-center text-gray-300 font-semibold"
+                >
+                  {locale === 'tr' ? 'Anasayfa' : 'Home'}
+                </Disclosure.Button>
+              </Link>
+              <Link href={'/tables'} passHref>
+                <Disclosure.Button
+                  as="a"
+                  className="block border-l-4 border-indigo-500  py-2 pl-3 pr-4 text-base text-center text-gray-300 font-semibold"
+                >
+                  {locale === 'tr' ? 'Tablolar' : 'Tables'}
+                </Disclosure.Button>
+              </Link>
+              <Link href={'/bets'} passHref>
+                <Disclosure.Button
+                  as="a"
+                  className="block border-l-4 border-indigo-500  py-2 pl-3 pr-4 text-base text-center text-gray-300 font-semibold"
+                >
+                  {locale === 'tr' ? 'Kuponlar' : 'Bets'}
+                </Disclosure.Button>
+              </Link>
+              <Link href={'/posts'} passHref>
+                <Disclosure.Button
+                  as="a"
+                  className="block border-l-4 border-indigo-500  py-2 pl-3 pr-4 text-base text-center text-gray-300 font-semibold"
+                >
+                  {locale === 'tr' ? 'Blog' : 'Posts'}
+                </Disclosure.Button>
+              </Link>
+              {session && (
+                <>
+                  <Link href="/admin/dashboard" passHref>
+                    <Disclosure.Button
+                      as="a"
+                      className="block border-l-4 border-indigo-500  py-2 pl-3 pr-4 text-base text-center text-gray-300 font-semibold"
+                    >
+                      Dashboard
+                    </Disclosure.Button>
+                  </Link>
+                  <button
+                    onClick={onLogoutClick}
+                    className="w-full text-center  block py-2 text-base text-betOrbitMainSilver hover:text-gray-400"
+                  >
+                    LogOut
+                  </button>
+                </>
+              )}
               <Disclosure.Button
-                as="a"
-                href="#"
-                className="block border-l-4 border-indigo-500 bg-indigo-50 py-2 pl-3 pr-4 text-base font-medium text-indigo-700"
+                as="div"
+                className="block   py-2 pl-3 pr-4 text-base text-center text-gray-300 font-semibold"
               >
-                Dashboard
-              </Disclosure.Button>
-              <Disclosure.Button
-                as="a"
-                href="#"
-                className="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-betOrbitMainSilver hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
-              >
-                Team
-              </Disclosure.Button>
-              <Disclosure.Button
-                as="a"
-                href="#"
-                className="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-betOrbitMainSilver hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
-              >
-                Projects
-              </Disclosure.Button>
-              <Disclosure.Button
-                as="a"
-                href="#"
-                className="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-betOrbitMainSilver hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
-              >
-                Calendar
+                <Switcher />
               </Disclosure.Button>
             </div>
           </Disclosure.Panel>

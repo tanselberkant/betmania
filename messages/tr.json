@@ -1,7 +1,22 @@
 {
-    "IndexMeta": {
-        "title": "BetsMania | Anasayfa",
-        "description": "Betsmania anasayfa",
-        "keyword": "betsmania"
-    }
+  "IndexMeta": {
+    "title": "BetsOrbit | Anasayfa",
+    "description": "BetsOrbit bahis tavsiyeleri, maç analizleri ve kazanma stratejileri",
+    "keyword": "betsorbit"
+  },
+  "TablesMeta": {
+    "title": "BetsOrbit | Tablolar",
+    "description": "BetsOrbit bahis tavsiyeleri, maç analizlerini inceleyin, oranlara göz atın",
+    "keyword": "betsorbit tablolar"
+  },
+  "BetsMeta": {
+    "title": "BetsOrbit | Kuponlar",
+    "description": "BetsOrbit kupon tavsiyeleri, kazandıran kuponlarla sizde kazanın",
+    "keyword": "betsorbit kuponlar"
+  },
+  "PostsMeta": {
+    "title": "BetsOrbit | Blog",
+    "description": "BetsOrbit bahis tavsiyeleri, bahis yapmanın incelikleri, mac analizleri gibi değerli içerikler sunar, Detaylar için takip edin",
+    "keyword": "betsorbit blog"
+  }
 }

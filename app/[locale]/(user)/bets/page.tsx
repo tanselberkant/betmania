@@ -2,9 +2,19 @@ import BetsPageWrapper from '@/components/bets/BetsPageWrapper';
 import HomeSubscribeBanner from '@/components/home/HomeSubscribeBanner';
 import TablesPagination from '@/components/paginations/TablesPagination';
 import TableWrapperSuspense from '@/components/suspenses/TableWrapperSuspense';
-
-import { useLocale } from 'next-intl';
 import React, { Suspense } from 'react';
+import { getTranslations } from 'next-intl/server';
+import { useLocale } from 'next-intl';
+
+export async function generateMetadata({ params: { locale } }: any) {
+  const t = await getTranslations({ locale, namespace: 'BetsMeta' });
+
+  return {
+    title: t('title'),
+    keywords: t('keyword'),
+    description: t('description'),
+  };
+}
 
 const getBetCountData = async () => {
   const res = await fetch(`http://localhost:3000/api/coupon-count`, {

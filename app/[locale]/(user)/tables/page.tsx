@@ -3,7 +3,18 @@ import TablesPagination from '@/components/paginations/TablesPagination';
 import TableWrapperSuspense from '@/components/suspenses/TableWrapperSuspense';
 import TablesPageWrapper from '@/components/table/TablesPageWrapper';
 import { useLocale } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import React, { Suspense } from 'react';
+
+export async function generateMetadata({ params: { locale } }: any) {
+  const t = await getTranslations({ locale, namespace: 'TablesMeta' });
+
+  return {
+    title: t('title'),
+    keywords: t('keyword'),
+    description: t('description'),
+  };
+}
 
 const getTableCountData = async () => {
   const res = await fetch(`http://localhost:3000/api/table-count`, {

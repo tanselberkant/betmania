@@ -7,13 +7,15 @@ import AdminDashboardLayout from '@/components/adminDashboard/AdminDashboardLayo
 import { getServerSession } from 'next-auth';
 import auth from '@/lib/auth';
 
+export const metadata = {
+  title: 'BetsOrbit | Admin',
+};
+
 const rubik = Rubik({
   subsets: ['latin'],
   display: 'swap',
   weight: ['400', '500', '700', '900'],
 });
-
-const locales = ['en', 'de'];
 
 export default async function AdminLayout({
   children,

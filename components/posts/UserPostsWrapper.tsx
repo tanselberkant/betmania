@@ -28,9 +28,11 @@ const UserPostsWrapper = async ({
     <div className="py-12">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:max-w-4xl">
-          <p className="mt-2 text-lg leading-8 text-gray-300 text-center text-glow-silver">
-            Learn how to grow your business with our expert advice.
-          </p>
+          <h4 className="mt-2 text-lg leading-8 text-gray-300 text-center text-glow-silver">
+            {locale === 'tr'
+              ? 'Uzman tavsiyelerimizle bahis gelirinizi nasıl artıracağınızı öğrenin.'
+              : 'Learn how to grow your betting income with our expert advice.'}
+          </h4>
           <div className="mt-16 space-y-20 lg:mt-20 lg:space-y-20">
             {posts.map((post: PostData, index: number) => (
               <article

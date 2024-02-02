@@ -1,7 +1,22 @@
 {
-    "IndexMeta": {
-        "title": "BetsMania | Home",
-        "description": "Betsmania home",
-        "keyword": "betsmania"
-    }
+  "IndexMeta": {
+    "title": "BetsOrbit | Home",
+    "description": "BetsOrbit betting tips, match analyses, and winning strategies",
+    "keyword": "betsorbit"
+  },
+  "TablesMeta": {
+    "title": "BetsOrbit | Tables",
+    "description": "Explore BetsOrbit betting tips, delve into match analyses, take a look at the odds",
+    "keyword": "betsorbit tables"
+  },
+  "BetsMeta": {
+    "title": "BetsOrbit | Bets",
+    "description": "BetsOrbit coupon recommendations, win with winning coupons",
+    "keyword": "betsorbit bets"
+  },
+  "PostsMeta": {
+    "title": "BetsOrbit | Posts",
+    "description": "BetsOrbit offers valuable content on betting tips, the nuances of betting, match analyses, and more. Follow for details",
+    "keyword": "betsorbit posts"
+  }
 }
