@@ -18,8 +18,10 @@ const TableAddForm = () => {
       router.push('/admin/tables');
     } else if (state === 'Something went wrong') {
       setErrorMessage('An error occurred. Please try again.');
+      setDisabled(false);
     } else if (state === 'No date provided') {
       setErrorMessage('Gün Girmediniz');
+      setDisabled(false);
     }
   }, [state, router]);
 
