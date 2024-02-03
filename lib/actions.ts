@@ -2,7 +2,8 @@
 
 import { revalidatePath } from 'next/cache';
 import { connectToDb } from '@/utils/connectDb';
-import { Coupon, Tip, Post } from './models';
+import { Coupon, Tip, Post, Subscriber } from './models';
+import { sendMail } from './sendMail';
 
 // >>>>>> COUPON ACTIONS
 export const addBet = async (prevState: any, formData: BetsData) => {
@@ -57,6 +58,18 @@ export const addTable = async (prevState: any, formData: TipsData) => {
 
     await newCoupon.save();
     revalidatePath('/', 'layout');
+
+    // E-posta gönderme işlemi
+    try {
+      await sendMail(); // sendMail fonksiyonunu çağır
+      console.log('Email sent successfully after adding a table.');
+    } catch (emailError) {
+      console.error(
+        'Failed to send email, but the table was added successfully:',
+        emailError
+      );
+      // Burada e-posta gönderme hatası yakalandı, ancak işleme devam ediliyor.
+    }
     return 'Table saved successfully';
   } catch (err: any) {
     console.error(err);
@@ -139,5 +152,25 @@ export const deletePost = async (formData: any) => {
   } catch (err) {
     console.log(err);
     return 'Something went wrong';
+  }
+};
+
+// >>>>>> Subscriber ACTIONS
+export const addSubscriber = async (prevState: any, email: any) => {
+  try {
+    await connectToDb(); // Veritabanına bağlan
+
+    //Check if email exist
+    const existingSubscriber = await Subscriber.findOne({ email: email });
+    if (existingSubscriber) return 'Mail allready exist';
+    else {
+      // Create new subscriber
+      const newSubscriber = new Subscriber({ email });
+      await newSubscriber.save();
+      return 'Subscriber saved successfully';
+    }
+  } catch (err) {
+    console.error(err); // Hata yakala ve konsola yaz
+    return 'An error was encountered while registering a subscriber'; // Hata mesajı dön
   }
 };

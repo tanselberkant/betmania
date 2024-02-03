@@ -51,8 +51,8 @@ export default function Example({ children, session }: Props) {
           { name: 'Posts', href: `/admin/posts`, icon: CakeIcon },
           { name: 'Post Ekle', href: `/admin/add-posts`, icon: LinkIcon },
           {
-            name: 'Reports',
-            href: `/admin/reports`,
+            name: 'Subscribers',
+            href: `/admin/subscribers`,
             icon: DocumentDuplicateIcon,
           },
         ]
@@ -121,7 +121,7 @@ export default function Example({ children, session }: Props) {
                   <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-indigo-600 px-6 pb-2">
                     <div className="flex h-16 shrink-0 items-center">
                       <Link href={'/'} className="text-white text-xl w-full">
-                        Betmania
+                        BetOrbit
                       </Link>
                     </div>
                     <nav className="flex flex-1 flex-col">
@@ -184,7 +184,7 @@ export default function Example({ children, session }: Props) {
           <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-indigo-600 px-6">
             <div className="flex h-16 shrink-0 items-center ">
               <Link href={'/'} className="text-white text-xl w-full">
-                Betmania
+                BetOrbit
               </Link>
             </div>
             <nav className="flex flex-1 flex-col">

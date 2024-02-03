@@ -1,5 +1,5 @@
 import React from 'react';
-import SubscribeForm from '../subscribeForm/SubscribeForm';
+import SubscribeForm from '../subscribe/SubscribeForm';
 import { useLocale } from 'next-intl';
 import Image from 'next/image';
 
@@ -20,7 +20,7 @@ const HomeSubscribeBanner = () => {
           </div>
           <div className="relative bg-gray-900 bg-opacity-75 px-2 py-32 sm:px-12 sm:py-40 lg:px-16 ">
             <div className="relative mx-auto flex max-w-3xl flex-col items-center text-center">
-              <p className="my-3  text-3xl font-bold text-white">
+              <p className="my-3 text-xl  lg:text-3xl font-bold text-white">
                 {locale === 'tr'
                   ? 'Kaçırmamak için abone olun!'
                   : "Subscribe so you don't miss it!"}
