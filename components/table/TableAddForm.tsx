@@ -8,11 +8,13 @@ import { useFormState } from 'react-dom';
 const TableAddForm = () => {
   const [state, formAction] = useFormState(addTable, undefined);
   const [errorMessage, setErrorMessage] = useState('');
+  const [disabled, setDisabled] = useState(false);
   const router = useRouter();
 
   // CATCHING THE STATE OF THE FORM
   useEffect(() => {
     if (state === 'Table saved successfully') {
+      setDisabled(false);
       router.push('/admin/tables');
     } else if (state === 'Something went wrong') {
       setErrorMessage('An error occurred. Please try again.');
@@ -96,6 +98,7 @@ const TableAddForm = () => {
   // SUBMITTIN THE FORM
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setDisabled(true);
     // console.log('formData', formData);
     formAction(formData);
   };
@@ -253,6 +256,7 @@ const TableAddForm = () => {
             Maç Ekle
           </button>
           <button
+            disabled={disabled}
             className="bg-green-500 text-white border-2 rounded-lg border-green-500 hover:text-green-300 p-2"
             type="submit"
           >

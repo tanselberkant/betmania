@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 import { EnvelopeIcon, ArrowDownIcon } from '@heroicons/react/20/solid';
 import { useLocale } from 'next-intl';
-import SubscribeForm from '../subscribeForm/SubscribeForm';
+import SubscribeForm from '../subscribe/SubscribeForm';
 
 const HomeBanner = () => {
   const locale = useLocale();
@@ -51,9 +51,8 @@ const HomeBanner = () => {
             }}
           />
         </div>
-        <div className="mx-auto max-w-7xl px-6 pb-24 pt-10 sm:pb-32 lg:flex lg:px-8 lg:py-40">
+        <div className="mx-auto max-w-7xl px-6 pb-24 pt-10 sm:pb-32 lg:flex lg:px-8 lg:py-20">
           <div className="mx-auto max-w-2xl flex-shrink-0 lg:mx-0 lg:max-w-xl lg:pt-8">
-            <div className="mt-24 sm:mt-32 lg:mt-16"></div>
             {locale === 'tr' ? (
               <h1 className="mt-10 text-4xl font-bold tracking-tight text-white sm:text-6xl">
                 <span className="text-orbitPurple-custom">BetOrbit</span>'e Hoş

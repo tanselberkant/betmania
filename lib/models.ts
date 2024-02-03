@@ -85,7 +85,18 @@ const postSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+const subscriberSchema = new mongoose.Schema(
+  {
+    email: {
+      type: String,
+    },
+  },
+  { timestamps: true }
+);
+
 export const Coupon =
   mongoose.models?.Coupon || mongoose.model('Coupon', couponSchema);
 export const Post = mongoose.models?.Post || mongoose.model('Post', postSchema);
-export const Tip = mongoose.models.Tip || mongoose.model('Tip', tipSchema);
+export const Tip = mongoose.models?.Tip || mongoose.model('Tip', tipSchema);
+export const Subscriber =
+  mongoose.models?.Subscriber || mongoose.model('Subscriber', subscriberSchema);

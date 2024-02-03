@@ -60,3 +60,15 @@ type PostsData = {
   _id?: string;
   posts: PostData[];
 };
+
+type SubscriberData = {
+  _id?: string;
+  createdAt?: string;
+  updatedAt?: string;
+  email: string;
+};
+
+type SubscribersData = {
+  subscribers: SubscriberData[];
+  total: number | string;
+};
