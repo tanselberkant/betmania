@@ -4,9 +4,7 @@ import { getServerSession } from 'next-auth';
 import React from 'react';
 
 const getTableData = async (id: string) => {
-  const res = await fetch(`http://localhost:3000/api/tables?id=${id}`, {
-    // next: { revalidate: 3600 },
-  });
+  const res = await fetch(`${process.env.BASIC_URL}/api/tables?id=${id}`);
 
   if (!res.ok) {
     throw new Error('Something went wrong');

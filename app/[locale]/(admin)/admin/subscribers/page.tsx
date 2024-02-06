@@ -4,7 +4,7 @@ import { getServerSession } from 'next-auth';
 import React, { Suspense } from 'react';
 
 const getSubscribersData = async () => {
-  const res = await fetch('http://localhost:3000/api/subscribers', {
+  const res = await fetch(`${process.env.BASIC_URL}/api/subscribers`, {
     next: { revalidate: 3600 },
   });
 

@@ -5,7 +5,7 @@ import { useLocale } from 'next-intl';
 import UserSingleBetTable from '@/components/bets/UserSingleBetTable';
 
 const getCouponData = async (id: string) => {
-  const res = await fetch(`http://localhost:3000/api/coupons/${id}`);
+  const res = await fetch(`${process.env.BASIC_URL}/api/coupons/${id}`);
 
   if (!res.ok) {
     throw new Error('Something went wrong');

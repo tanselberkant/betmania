@@ -5,7 +5,7 @@ import BetUserTable from './BetUserTable';
 import { useLocale } from 'next-intl';
 
 const getBetsData = async (page: number) => {
-  const res = await fetch(`http://localhost:3000/api/coupons?page=${page}`);
+  const res = await fetch(`${process.env.BASIC_URL}/api/coupons?page=${page}`);
 
   if (!res.ok) {
     throw new Error('Something went wrong');

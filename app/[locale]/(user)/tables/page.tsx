@@ -17,7 +17,7 @@ export async function generateMetadata({ params: { locale } }: any) {
 }
 
 const getTableCountData = async () => {
-  const res = await fetch(`http://localhost:3000/api/table-count`, {
+  const res = await fetch(`${process.env.BASIC_URL}/api/table-count`, {
     // next: { revalidate: 3600 },
   });
 

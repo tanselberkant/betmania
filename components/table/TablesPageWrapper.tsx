@@ -3,7 +3,7 @@ import AddCarousel from './AddCarousel';
 import Table from './Table';
 
 const getTableData = async (page: number) => {
-  const res = await fetch(`http://localhost:3000/api/tables?page=${page}`, {
+  const res = await fetch(`${process.env.BASIC_URL}/api/tables?page=${page}`, {
     // next: { revalidate: 3600 },
   });
 

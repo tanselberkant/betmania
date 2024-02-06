@@ -4,7 +4,7 @@ import Link from 'next/link';
 import React from 'react';
 
 const getPostsData = async (page: number | string) => {
-  const res = await fetch(`http://localhost:3000/api/posts?page=${page}`);
+  const res = await fetch(`${process.env.BASIC_URL}/api/posts?page=${page}`);
 
   if (!res.ok) {
     throw new Error('Something went wrong');

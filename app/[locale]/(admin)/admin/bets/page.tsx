@@ -4,7 +4,7 @@ import { getServerSession } from 'next-auth';
 import React from 'react';
 
 const getData = async () => {
-  const res = await fetch('http://localhost:3000/api/coupons');
+  const res = await fetch(`${process.env.BASIC_URL}/api/coupons`);
 
   if (!res.ok) {
     throw new Error('Something went wrong');

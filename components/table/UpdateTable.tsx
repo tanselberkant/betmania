@@ -20,7 +20,7 @@ const UpdateTable = ({ results, session }: Props) => {
     setIsDeleting(true);
     try {
       const res = await fetch(
-        `http://localhost:3000/api/tables?id=${results._id}`,
+        `${process.env.BASIC_URL}/api/tables?id=${results._id}`,
         {
           method: 'DELETE',
           headers: {
@@ -75,7 +75,7 @@ const UpdateTable = ({ results, session }: Props) => {
       tips: tips,
     };
 
-    const res = await fetch(`http://localhost:3000/api/tables `, {
+    const res = await fetch(`${process.env.BASIC_URL}/api/tables `, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

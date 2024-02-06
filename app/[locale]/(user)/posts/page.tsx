@@ -17,7 +17,7 @@ export async function generateMetadata({ params: { locale } }: any) {
 }
 
 const getPostCount = async () => {
-  const res = await fetch(`http://localhost:3000/api/post-count`, {
+  const res = await fetch(`${process.env.BASIC_URL}/api/post-count`, {
     // next: { revalidate: 3600 },
   });
 
