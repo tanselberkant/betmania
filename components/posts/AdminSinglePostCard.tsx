@@ -49,10 +49,10 @@ const AdminSinglePostCard = ({ index, post, session }: Props) => {
       <div>
         <div className="group relative max-w-xl">
           <h3 className="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
-            <Link href={`/admin/post/${post.slug}`}>
-              <span className="absolute inset-0" />
-              {post.title}
-            </Link>
+            {/* <Link href={`/admin/post/${post.slug}`}> */}
+            <span className="absolute inset-0" />
+            {post.title}
+            {/* </Link> */}
           </h3>
           <p className="mt-5 text-sm leading-6 text-gray-600">{post.desc}</p>
         </div>
@@ -89,3 +89,56 @@ const AdminSinglePostCard = ({ index, post, session }: Props) => {
 };
 
 export default AdminSinglePostCard;
+
+// app
+//  [locale]
+//    (user)
+//       bets
+//         page.tsx
+//       posts
+//         page.tsx
+//       tables
+//          page.tsx
+//       layout.tsx
+//       page.tsx
+//    (admin)
+//      admin
+//         add-bets
+//           page.tsx
+//         add-posts
+//           page.tsx
+//         add-table
+//           page.tsx
+//         bets
+//           page.tsx
+//         dashboard
+//           page.tsx
+//         posts
+//           page.tsx
+//         subscribers
+//           page.tsx
+//         tables
+//           page.tsx
+//       layout.tsx
+//    (auth)
+//     login
+//       page.tsx
+//     layout.tsx
+//  api
+//     auth
+//       [...nextauth]
+//         route.ts
+//     coupon-count
+//       route.ts
+//     coupons
+//       route.ts
+//     email
+//       route.ts
+//     post-count
+//       route.ts
+//     subscribers
+//       route.ts
+//     table-count
+//       route.ts
+//     tables
+//       route.ts

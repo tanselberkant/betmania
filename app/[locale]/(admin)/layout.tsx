@@ -34,7 +34,9 @@ export default async function AdminLayout({
   return (
     <html lang={locale} className={rubik.className}>
       <body>
-        <AdminDashboardLayout children={children} session={session} />
+        <AdminDashboardLayout session={session}>
+          {children}
+        </AdminDashboardLayout>
       </body>
     </html>
   );

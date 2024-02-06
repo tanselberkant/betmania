@@ -2,9 +2,7 @@ import SinglePost from '@/components/post/SinglePost';
 import { ResolvingMetadata, Metadata } from 'next';
 
 const getPostData = async (slug: string) => {
-  const res = await fetch(`http://localhost:3000/api/posts?slug=${slug}`, {
-    // next: { revalidate: 3600 },
-  });
+  const res = await fetch(`http://localhost:3000/api/posts/${slug}`);
 
   if (!res.ok) {
     throw new Error('Something went wrong');

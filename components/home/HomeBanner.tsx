@@ -55,8 +55,8 @@ const HomeBanner = () => {
           <div className="mx-auto max-w-2xl flex-shrink-0 lg:mx-0 lg:max-w-xl lg:pt-8">
             {locale === 'tr' ? (
               <h1 className="mt-10 text-4xl font-bold tracking-tight text-white sm:text-6xl">
-                <span className="text-orbitPurple-custom">BetOrbit</span>'e Hoş
-                Geldiniz
+                <span className="text-orbitPurple-custom">BetOrbit</span>
+                {`'e `}Hoş Geldiniz
               </h1>
             ) : (
               <h1 className="mt-10 text-4xl font-bold tracking-tight text-white sm:text-6xl">
@@ -67,28 +67,28 @@ const HomeBanner = () => {
             <h2 className="mt-12 text-lg leading-8 text-gray-300">
               {locale === 'tr' ? (
                 <>
-                  Bahis Evreniniz! Yıldızlar arası en keskin bahis tavsiyeleri,
+                  {` Bahis Evreniniz! Yıldızlar arası en keskin bahis tavsiyeleri,
                   maç analizleri ve kazanma stratejileriyle galaksiler ötesi bir
                   keşfe çıkın. Futbolun büyüleyici dünyasında, her bir maç bir
                   gezegen kadar zengin ve çeşitli. BetOrbit, size bu evrende
                   gezinirken, en değerli bahis fırsatlarını bulmanız için
-                  rehberlik eder.
+                  rehberlik eder.`}
                 </>
               ) : (
                 <>
-                  Your Betting Universe! The sharpest betting tips between the
+                  {`Your Betting Universe! The sharpest betting tips between the
                   stars, match on a transgalactic exploration with analysis and
                   winning strategies. get out In the fascinating world of
                   football, each match is a planet So rich and diverse. BetOrbit
                   helps you navigate this universe, It guides you to find
-                  valuable betting opportunities.
+                  valuable betting opportunities.`}
                 </>
               )}
             </h2>
             <p className="mt-8 text-lg leading-8 text-gray-300">
               {locale === 'tr'
                 ? 'Kaçırmamak için abone olun!'
-                : "Subscribe so you don't miss it!"}
+                : `Subscribe so you don't miss it!`}
             </p>
             <div className="mt-10 flex items-center gap-x-6 w-full ">
               <SubscribeForm />

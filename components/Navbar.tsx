@@ -55,7 +55,7 @@ export default function Navbar({ session }: Props) {
                   href={'/bets'}
                   className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-betOrbitMainSilver hover:text-gray-400"
                 >
-                  {locale === 'en' ? 'Bahisler' : 'Bets'}
+                  {locale === 'en' ? 'Bets' : 'Bahisler'}
                 </Link>
                 <Link
                   href={'/posts'}
@@ -122,7 +122,7 @@ export default function Navbar({ session }: Props) {
                   as="a"
                   className="block border-l-4 border-indigo-500  py-2 pl-3 pr-4 text-base text-center text-gray-300 font-semibold"
                 >
-                  {locale === 'tr' ? 'Kuponlar' : 'Bets'}
+                  {locale === 'tr' ? 'Bahisler' : 'Bets'}
                 </Disclosure.Button>
               </Link>
               <Link href={'/posts'} passHref>

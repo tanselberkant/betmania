@@ -84,6 +84,12 @@ const BetsAddForm = () => {
     <>
       <form onSubmit={handleSubmit} className="border-2 rounded-md py-2">
         <div className="border-b border-gray-900/10 pb-12 px-2">
+          <h1 className="text-lg text-red-400">
+            {`INFO: Oran'ları Nokta ile girin (1.40 - 1.38 etc.)`}
+          </h1>
+          <h1 className="text-lg text-red-400">
+            {`INFO: Maç kodu şuan önemsiz, boş bırakabilirsin`}
+          </h1>
           <div className="mt-10 grid grid-cols-1 gap-x6 gap-y-6 sm:grid-col-6">
             {/* BAHISCI ADI */}
             <div className="sm:col-span-4 w-full ">
@@ -97,9 +103,8 @@ const BetsAddForm = () => {
                 className="border-2 p-1"
               >
                 <option value="Drake">Drake</option>
-                <option value="Mosman">Mosman</option>
-                <option value="Tolgar">Tolgar</option>
-                <option value="Mercan">Mercan</option>
+                <option value="Osman">Kazandıran Osman</option>
+                <option value="Tolga">Tutturan Tolga</option>
               </select>
             </div>
 

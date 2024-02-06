@@ -16,6 +16,7 @@ const AdminPostContainer = ({ posts, session }: Props) => {
           <div className="mt-16 space-y-20 lg:mt-20 lg:space-y-20">
             {posts.map((post: PostData, index) => (
               <AdminSinglePostCard
+                key={index}
                 post={post}
                 index={index}
                 session={session}

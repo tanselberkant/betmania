@@ -9,11 +9,11 @@ export const pathnames = {
   '/': '/',
   '/bets': {
     en: '/bets',
-    tr: '/bahisler',
+    tr: '/bets',
   },
   '/bahisler': {
     en: '/bets',
-    tr: '/bahisler',
+    tr: '/bets',
   },
   '/tables': {
     en: '/tables',

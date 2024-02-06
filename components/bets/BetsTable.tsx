@@ -42,11 +42,9 @@ const BetsTable = ({ coupon, session }: Props) => {
           <div className="sm:flex sm:items-center">
             <div className="sm:flex-auto">
               <div className=" flex justify-between">
-                <Link href={`/admin/bets/${coupon.advisorName}`}>
-                  <h1 className="text-lg font-semibold leading-6 text-white">
-                    {coupon.advisorName}
-                  </h1>
-                </Link>
+                <h1 className="text-lg font-semibold leading-6 text-white">
+                  {coupon.advisorName}
+                </h1>
 
                 {session === 'admin' && (
                   <form action={deleteBet}>
