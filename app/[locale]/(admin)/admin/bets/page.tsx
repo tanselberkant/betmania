@@ -4,9 +4,7 @@ import { getServerSession } from 'next-auth';
 import React from 'react';
 
 const getData = async () => {
-  const res = await fetch('http://localhost:3000/api/coupons', {
-    next: { revalidate: 10 },
-  });
+  const res = await fetch('http://localhost:3000/api/coupons');
 
   if (!res.ok) {
     throw new Error('Something went wrong');
@@ -18,7 +16,6 @@ const getData = async () => {
 const AdminBetsPage = async () => {
   const session = await getServerSession(auth);
   const coupons = await getData();
-
   return (
     <div>
       {coupons.map((coupon: BetsData, index: number) => (

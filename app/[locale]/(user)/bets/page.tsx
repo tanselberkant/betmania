@@ -17,9 +17,7 @@ export async function generateMetadata({ params: { locale } }: any) {
 }
 
 const getBetCountData = async () => {
-  const res = await fetch(`http://localhost:3000/api/coupon-count`, {
-    // next: { revalidate: 3600 },
-  });
+  const res = await fetch(`http://localhost:3000/api/coupon-count`);
 
   if (!res.ok) {
     throw new Error('Something went wrong');

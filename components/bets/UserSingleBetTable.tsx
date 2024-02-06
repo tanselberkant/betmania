@@ -21,7 +21,7 @@ type Props = {
   };
 };
 
-const BetUserTable = ({ coupon }: Props) => {
+const UserSingleBetTable = ({ coupon }: Props) => {
   const locale = useLocale();
   const [isCopied, setIsCopied] = useState(false);
 
@@ -79,16 +79,18 @@ const BetUserTable = ({ coupon }: Props) => {
                 alt={advisorName + 'profil picture'}
               />
               <Link href={`/bets/${coupon._id}`}>
-                <h2 className="text-lg font-semibold leading-6 text-orbitPurple">
+                <h2 className="text-lg font-semibold  text-orbitPurple">
                   {advisorString}
                 </h2>
-                <p className="text-gray-300 mt-2">{coupon.description}</p>
+                <p className="text-gray-300 text-left text-lg mt-2">
+                  {coupon.description}
+                </p>
               </Link>
             </div>
             <div>
               <button
                 onClick={copyToClipboard}
-                className={`border-gray-300 border-[1.5px] rounded-md text-white px-4 py-2 border-mini-glow font-semibold glow-hover ${
+                className={`border-gray-300 border-[1.5px] text-lg rounded-md text-white px-4 py-2 border-mini-glow font-semibold glow-hover ${
                   isCopied ? 'animate-pulse' : ''
                 }`}
               >
@@ -109,16 +111,16 @@ const BetUserTable = ({ coupon }: Props) => {
                 {/* <th className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-white sm:pl-0">
                   Match Code
                 </th> */}
-                <th className="px-3 py-3.5 text-left text-sm font-semibold text-white">
+                <th className="px-3 py-3.5 text-center text-sm font-semibold text-white">
                   Date
                 </th>
-                <th className="px-3 py-3.5 text-left text-sm font-semibold text-white">
+                <th className="px-3 py-3.5 text-center text-sm font-semibold text-white">
                   Versus
                 </th>
-                <th className="px-3 py-3.5 text-left text-sm font-semibold text-white">
+                <th className="px-3 py-3.5 text-center text-sm font-semibold text-white">
                   Bets
                 </th>
-                <th className="px-3 py-3.5 text-left text-sm font-semibold text-white">
+                <th className="px-3 py-3.5 text-center  text-sm font-semibold text-white">
                   Odd
                 </th>
               </tr>
@@ -136,9 +138,6 @@ const BetUserTable = ({ coupon }: Props) => {
                 }
                 return (
                   <tr key={key}>
-                    {/* <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-white sm:pl-0">
-                        {match.matchCode}
-                      </td> */}
                     <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-300">
                       {locale === 'tr' ? day : dayEng}
                     </td>
@@ -156,7 +155,7 @@ const BetUserTable = ({ coupon }: Props) => {
               })}
             </tbody>
           </table>
-          <p className="text-end pr-8 mb-20 mt-6 text-gray-300 font-semibold">
+          <p className="text-end pr-8 mb-20 mt-6 text-gray-300 font-semibold text-lg">
             {locale === 'tr' ? (
               <>
                 <>Toplam Oran: </>
@@ -179,4 +178,4 @@ const BetUserTable = ({ coupon }: Props) => {
   );
 };
 
-export default BetUserTable;
+export default UserSingleBetTable;

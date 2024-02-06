@@ -3,7 +3,7 @@ import createIntlMiddleware from 'next-intl/middleware';
 import { locales, pathnames } from './navigation';
 
 import { withAuth } from 'next-auth/middleware';
-import { getSession } from 'next-auth/react';
+// import { getSession } from 'next-auth/react';
 import { NextRequest, NextResponse } from 'next/server';
 
 const publicPages = [
@@ -55,12 +55,12 @@ export default async function middleware(req: NextRequest) {
   };
 
   // Oturum kontrolü
-  const session = await getSession({ req: adaptedReq });
+  // const session = await getSession({ req: adaptedReq });
 
-  // Kullanıcı oturum açmışsa ve /login sayfasına gitmeye çalışıyorsa, ana sayfaya yönlendir
-  if (session && req.nextUrl.pathname === '/login') {
-    return NextResponse.redirect(new URL('/', req.url));
-  }
+  // // Kullanıcı oturum açmışsa ve /login sayfasına gitmeye çalışıyorsa, ana sayfaya yönlendir
+  // if (session && req.nextUrl.pathname === '/login') {
+  //   return NextResponse.redirect(new URL('/', req.url));
+  // }
 
   // Dinamik yol için özel kontrol
   if (
